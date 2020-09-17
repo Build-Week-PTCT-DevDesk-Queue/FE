@@ -1,28 +1,17 @@
 import React from "react";
-import { Link, Route, Switch } from "react-router-dom";
-import Login from "./LoginForm";
-import Registration from "./RegistrationForm";
+import { useHistory } from "react-router-dom";
 
 
 const Home = () => {
+    const history = useHistory();
+    //console.log("history: ", history);
+    const navToLoginForm = (e) => {
+        history.push('/login');
+    }
     return(
         <>
-        <header id="home-page">
-            <img alt="logo" />
-            <nav>
-                <Link className="link" to="/login" >Login</Link>
-                <Link className="link" to="/registration" >New here? Register</Link>
-            </nav>
-        </header>
-        <Switch>
-            <Route path="/login">
-                <Login />
-            </Route>
-            <Route path="/registration">
-                <Registration />
-            </Route>
-        </Switch>
-      </>
+            <button className="home-page-button" onClick={navToLoginForm}>Get Started</button>
+        </>
     )
 }
 export default Home;

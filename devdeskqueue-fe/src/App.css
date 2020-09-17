@@ -7,18 +7,32 @@ html{
 }
 .App {
   text-align: center;
+  font-size: 62.5%;
   /* background-image: url("safe.jpg");
   background-repeat: no-repeat;
   background-size: cover; */
 }
-
-#home-page {
+.error-message{
+  color: red;
+}
+img{
+  width: 100%;
+}
+nav{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+#home-page-header {
+  text-align: center;
   padding: 2rem;
   display: flex;
   flex-direction: row;
   align-items: space-between;
   justify-content: space-between;
-  font-size: 90%;
+  font-size: 100%;
+  background-color: #FA8072;
 }
 input{
 /* White Background */
@@ -27,7 +41,17 @@ height: 1.5rem;
 background: #FFFFFF;
 border-radius: 4px;
 }
-button{
+.home-page-button{
+margin-top: 2rem;
+cursor: pointer;
+padding: 1rem;
+font-size: 150%;
+background: #C716C4;
+border-radius: 4px;
+color: white;
+text-decoration: none;
+}
+.form-button{
 /* Inactive Grey */
 width: 30%;
 height: 1.5rem;
@@ -35,8 +59,11 @@ margin: 1rem;
 background: #EFEFEF;
 border-radius: 4px;
 color: #2E2C48;
+cursor: pointer;
+font-size: 100%;
+font-weight: bold;
 }
-button:hover{
+.form-button:hover{
   border-color: skyblue;
 }
 input:focus{
@@ -45,7 +72,7 @@ input:focus{
 }
 .link:hover{
   cursor: pointer;
-  color:#4B0082;
+  color:#FFF5EE;
 }
 /* .form-wrapper{
   background-image: url("safe.jpg");
@@ -55,17 +82,16 @@ input:focus{
 form{
   margin: 0 auto;
   margin-top: 1rem;
+  margin-bottom: 1rem;
   width: 50%;
-  height: 50rem;
   background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 100%;
-  background-image: url("safe.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
+  font-size: 150%;
+  /* box-shadow: 3px 3px 5px 6px; */
+  box-shadow: 0 8px 6px -6px black;
 }
 .link{
   text-decoration: none;
@@ -74,7 +100,44 @@ form{
   color: black;
   font-weight: bold;
 }
-label{
-  align-items: flex-start;
+.form-links{
+  text-decoration: none;
+  color: black;
 }
-
+.form-links:hover{
+  cursor: pointer;
+  color: #C71585;
+  font-size: 150%;
+}
+label{
+  align-self: center;
+}
+.image-container{
+  position: relative;
+  text-align: center;
+  color: black;
+}
+.center-text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@media(max-width: 400px){
+  input, button{
+    width: 70%;
+  }
+  .form-button{
+    width: 50%;
+  }
+  /* nav{
+    width: 30%;
+  } */
+  #home-page-header{
+    flex-direction: column;
+    font-size: 80%;
+  }
+  .center-text{
+    font-size: 70%;
+  }
+}

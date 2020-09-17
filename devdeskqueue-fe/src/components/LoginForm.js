@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
 import * as yup from "yup";
 
 const loginSchema = yup.object().shape({
@@ -48,15 +47,23 @@ const Login = () => {
 return(
     <div className="form-wrapper">
     
-    <h1>Let's get going</h1>
+    <h1>Let's get started</h1>
     <form onSubmit={submitForm}>
-        <label htmlFor="name"><h4>Username</h4></label>
+        <label htmlFor="name"><h4>Username</h4>
+        {errorsLogin.name.length > 0 ? <p className="error-message">{errorsLogin.name}</p> : null}
+        </label>
         <input name="name" type="text" placeholder="username" onChange={inputChange} />
-        <label htmlFor="password"><h4>Password</h4></label>
+
+        <label htmlFor="password"><h4>Password</h4>
+        {errorsLogin.password.length > 0 ? <p className="error-message">{errorsLogin.password}</p> : null}
+        </label>
         <input type="password" name="password" placeholder="password" onChange={inputChange}/>
-        <button type="submit">Login</button>
-        <span className="styled-span"></span><span className="styled-span">or</span><span></span>
-        <p><Link className="link" to="/registration">Create an account</Link></p>
+
+        <button className="form-button" type="submit">Login</button>
+
+        <p>or</p>
+
+        <p><Link className="form-links" to="/registration">Create an account</Link></p>
     </form>
     </div>
 )

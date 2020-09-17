@@ -7,7 +7,7 @@ const Registration = () => {
         <>
         <header>
             <h1>Ready to get some help?</h1>
-            <p>Create an account or <Link to="/login" >Login</Link></p>
+            <p>Create an account or <Link className="form-links" to="/login" >Login</Link></p>
         </header>
         </>
 
