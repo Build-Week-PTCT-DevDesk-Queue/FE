@@ -34,7 +34,7 @@ nav{
   font-size: 100%;
   background-color: #FA8072;
 }
-input{
+input, select{
 /* White Background */
 width: 40%;
 height: 1.5rem;
@@ -43,6 +43,7 @@ border-radius: 4px;
 }
 .home-page-button{
 margin-top: 2rem;
+margin-bottom: 2rem;
 cursor: pointer;
 padding: 1rem;
 font-size: 150%;
@@ -53,7 +54,7 @@ text-decoration: none;
 }
 .form-button{
 /* Inactive Grey */
-width: 30%;
+width: 50%;
 height: 1.5rem;
 margin: 1rem;
 background: #EFEFEF;
@@ -67,6 +68,10 @@ font-weight: bold;
   border-color: skyblue;
 }
 input:focus{
+  outline: none;
+  border-color: skyblue;
+}
+select:focus{
   outline: none;
   border-color: skyblue;
 }
@@ -92,6 +97,9 @@ form{
   font-size: 150%;
   /* box-shadow: 3px 3px 5px 6px; */
   box-shadow: 0 8px 6px -6px black;
+}
+#registration-p-tag{
+  font-size: initial;
 }
 .link{
   text-decoration: none;
