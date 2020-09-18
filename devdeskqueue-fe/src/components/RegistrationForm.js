@@ -6,8 +6,9 @@ import axios from "axios";
 
 const regFormSchema = yup.object().shape({
     name: yup.string().required("Must choose a username!")
-    .max(10, "Username must have not exceed 10 characters")
-    .matches(/[a-zA-z][a-zA-Z]{2,}/, "Username must contain letters only"),
+    .min(2, "Username must be at least 2 characters long")
+    .max(20, "Username must not exceed 10 characters")
+    .matches(/[a-zA-z]/, "Username must contain letters only"),
     password: yup.string()
     .required("Must set a password")
     .max(8 ,"Password should be 8 characters long")
