@@ -1,5 +1,9 @@
 import React from "react";
 import {Link} from "react-router-dom";
+import styled, { keyframes } from "styled-components";
+import { bounce } from "react-animations";
+
+
 export default function HeaderComp() {
 return (
     <header id="home-page-header">
