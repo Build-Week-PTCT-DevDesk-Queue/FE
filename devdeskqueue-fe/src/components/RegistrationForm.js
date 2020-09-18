@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
@@ -7,7 +7,7 @@ import axios from "axios";
 const regFormSchema = yup.object().shape({
     name: yup.string().required("Must choose a username!")
     .min(2, "Username must be at least 2 characters long")
-    .max(20, "Username must not exceed 10 characters")
+    .max(20, "Username must not exceed 20 characters")
     .matches(/[a-zA-z]/, "Username must contain letters only"),
     password: yup.string()
     .required("Must set a password")
@@ -55,6 +55,14 @@ const Registration = () => {
             role: ""
         })
     }
+
+    const [buttonDisabled, setButtonDisabled] = useState(true);
+    useEffect(() => {
+        regFormSchema.isValid(regState).then((valid) => {
+            setButtonDisabled(!valid);
+        });
+    }, [regState]);
+
     return(
         <>
         <header>
@@ -82,7 +90,7 @@ const Registration = () => {
             <option value="student">I am a Student</option>
         </select>
 
-        <button className="form-button" type="submit">Create Account</button>
+        <button disabled={buttonDisabled} className="form-button" type="submit">Create Account</button>
         </form>
         </>
 
