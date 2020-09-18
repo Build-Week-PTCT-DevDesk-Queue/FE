@@ -1,38 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Grandstander:wght@200&display=swap');
+*{
+  font-family: 'Grandstander', cursive;
+}
+html{
+  background: white;
+}
 .App {
   text-align: center;
+  font-size: 62.5%;
+  /* background-image: url("safe.jpg");
+  background-repeat: no-repeat;
+  background-size: cover; */
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.error-message{
+  color: red;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+img{
+  width: 100%;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+nav{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+#home-page-header {
+  text-align: center;
+  padding: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: space-between;
+  justify-content: space-between;
+  font-size: 100%;
+  background-color: #FA8072;
+}
+input{
+/* White Background */
+width: 40%;
+height: 1.5rem;
+background: #FFFFFF;
+border-radius: 4px;
+}
+.home-page-button{
+margin-top: 2rem;
+cursor: pointer;
+padding: 1rem;
+font-size: 150%;
+background: #C716C4;
+border-radius: 4px;
+color: white;
+text-decoration: none;
+}
+.form-button{
+/* Inactive Grey */
+width: 30%;
+height: 1.5rem;
+margin: 1rem;
+background: #EFEFEF;
+border-radius: 4px;
+color: #2E2C48;
+cursor: pointer;
+font-size: 100%;
+font-weight: bold;
+}
+.form-button:hover{
+  border-color: skyblue;
+}
+input:focus{
+  outline: none;
+  border-color: skyblue;
+}
+.link:hover{
+  cursor: pointer;
+  color:#FFF5EE;
+}
+/* .form-wrapper{
+  background-image: url("safe.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+} */
+form{
+  margin: 0 auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;
+  background-color: white;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  font-size: 150%;
+  /* box-shadow: 3px 3px 5px 6px; */
+  box-shadow: 0 8px 6px -6px black;
 }
-
-.App-link {
-  color: #61dafb;
+.link{
+  text-decoration: none;
+  padding: 2rem;
+  font-size: 200%;
+  color: black;
+  font-weight: bold;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.form-links{
+  text-decoration: none;
+  color: black;
+}
+.form-links:hover{
+  cursor: pointer;
+  color: #C71585;
+  font-size: 150%;
+}
+label{
+  align-self: center;
+}
+.image-container{
+  position: relative;
+  text-align: center;
+  color: black;
+}
+.center-text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@media(max-width: 400px){
+  input, button{
+    width: 70%;
   }
-  to {
-    transform: rotate(360deg);
+  .form-button{
+    width: 50%;
+  }
+  /* nav{
+    width: 30%;
+  } */
+  #home-page-header{
+    flex-direction: column;
+    font-size: 80%;
+  }
+  .center-text{
+    font-size: 70%;
   }
 }
