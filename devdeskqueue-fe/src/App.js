@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Link, Switch } from "react-router-dom";
 import Home from "./components/HomePage";
 import Login from "./components/LoginForm";
+/*TEMP*/ import HelperTickets from '../src/components/helper_tickets'
 import Registration from "./components/RegistrationForm";
 import './App.css';
 
@@ -13,6 +14,7 @@ function App() {
             <nav>
                 <Link className="link" to="/login" >Login</Link>
                 <Link className="link" to="/registration" >New here? Register</Link>
+                <Link className="link" to="/helper-tickets" >temp- delete this</Link>
             </nav>
         </header>
         <Switch>
@@ -21,6 +23,9 @@ function App() {
             </Route>
             <Route path="/registration">
                 <Registration />
+            </Route>
+            <Route path="/helper-tickets">
+                <HelperTickets />
             </Route>
             <Route path="/">
               <Home />

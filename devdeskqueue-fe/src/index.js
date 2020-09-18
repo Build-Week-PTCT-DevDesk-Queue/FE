@@ -4,10 +4,19 @@ import './index.css';
 import App from './App';
 import {BrowserRouter as Router} from "react-router-dom";
 
+//REDUX IMPORTS
+import { ticketReducer } from './reducers/ticketReducer';
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
+let store = createStore( ticketReducer, applyMiddleware(thunk));
+
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>
+  <Provider store={store}>
+      <Router>
+         <App />
+      </Router>
+  </Provider>
   ,
   document.getElementById('root')
 );
