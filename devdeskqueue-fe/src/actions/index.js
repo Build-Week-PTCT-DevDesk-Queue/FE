@@ -1,5 +1,5 @@
 import axios from "axios";
-import data from '../data';
+//import data from '../data';
 
 export const initializeSmurf = () => {
    return dispatch => {
@@ -12,5 +12,29 @@ export const initializeSmurf = () => {
      };
 }
 
-//
+  
+export const getTickets = () => {
 
+}
+
+export const createTicket = () => {
+   
+}
+
+export const assignTicket = (id) => {
+   return dispatch => {
+      dispatch( { type: "ASSIGN_TICKET", payload: id } )
+   }
+}
+
+export const resolveTicket = () => {
+   
+}
+
+export const reassignTicket = () => {
+   
+}
+
+export const deleteTicket = () => {
+   
+}

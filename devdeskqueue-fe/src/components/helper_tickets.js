@@ -1,20 +1,22 @@
-import React, { useState } from "react";
-//need to import connect and any functions from actions
+import React, { } from "react";
 import styled from 'styled-components';
-import data from '../data';  //temporary
+//REDUX
+import { connect } from 'react-redux';
+import { assignTicket } from '../actions';
 
 function HelperTickets(props){
 
    return (
       <TicketContainer> 
         <TicketList>
-           { data.map( item => {
-           return <Ticket>
+           { props.state.map( item => {
+           return <Ticket key={item.id}>
                      <h3>{item.title}</h3>
                      <p>Category: {item.category}</p>
                      <p>{item.description}</p>
                      <p>{item.tried}</p>
-                     <button>Help Student</button>
+                     <p>Assigned to: {item.helper_id}</p>
+                     <button onClick={ ()=> {props.assignTicket(item.id);} }>Help Student</button>
                   </Ticket>;
            })}
         </TicketList>
@@ -22,7 +24,11 @@ function HelperTickets(props){
     );
 }
 
-export default HelperTickets;
+const mapStateToProps = (state) => {
+   return {state};
+ }
+
+export default connect( mapStateToProps, { assignTicket } )(HelperTickets);
 
 const TicketContainer = styled.div`
 
