@@ -33,8 +33,7 @@ nav{
   font-size: 100%;
   background-color: #FA8072;
 }
-input, select{
-/* White Background */
+input, select, textarea{
 width: 40%;
 height: 1.5rem;
 background: #FFFFFF;
@@ -83,15 +82,18 @@ select:focus{
   outline: none;
   border-color: skyblue;
 }
+textarea:focus{
+  outline: none;
+  border-color: skyblue;
+}
+span{
+  color: #E9153E;
+  font-weight: bold;
+}
 .link:hover{
   cursor: pointer;
   color:#FFF5EE;
 }
-/* .form-wrapper{
-  background-image: url("safe.jpg");
-  background-repeat: no-repeat;
-  background-size: cover;
-} */
 form{
   margin: 0 auto;
   margin-top: 1rem;
@@ -106,7 +108,10 @@ form{
   /* box-shadow: 3px 3px 5px 6px; */
   box-shadow: 0 8px 6px -6px black;
 }
-#registration-p-tag{
+#ticket-form{
+  box-shadow: none;
+}
+#registration-p-tag, #ticket-form-pTag{
   font-size: initial;
 }
 .link{
@@ -125,9 +130,9 @@ form{
   color: #C71585;
   font-size: 150%;
 }
-label{
+/* label{
   align-self: center;
-}
+} */
 .image-container{
   position: relative;
   text-align: center;
