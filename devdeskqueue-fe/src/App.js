@@ -4,7 +4,9 @@ import Home from "./components/HomePage";
 import Login from "./components/LoginForm";
 import Registration from "./components/RegistrationForm";
 import HeaderComp from "./components/Header";
+import Footer from "./components/Footer";
 import './App.css';
+
 
 
 function App() {
@@ -22,6 +24,7 @@ function App() {
               <Home />
             </Route>
         </Switch>
+        <Footer />
     </div>
   );
 }
