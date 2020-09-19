@@ -1,5 +1,5 @@
 
-const initialState =  [
+const initialState = [
    {
       id: 1,                           //automatically assigned by database 
       date: Date.now(),                //timestamp, automatic
@@ -8,8 +8,8 @@ const initialState =  [
       description: 'When I try to post to the API, I get a 500 error', //string, required
       tried: 'Stack overflow, Google', //string, required
       category: 'React',               //string, required
-      status: false,                   //boolean, defaults to false, if ticket is resolved, helper will mark it true
-      helper_id: ""                   //defaults to "", if a helper selects a ticket, their id will be associated with it here
+      status: 0,                   //boolean, defaults to 0, if ticket is resolved, helper will mark it true
+      helper_id: null                   //defaults to null, if a helper selects a ticket, their id will be associated with it here
      },
      {
       id: 2,                    
@@ -19,8 +19,8 @@ const initialState =  [
       description: 'When I try to post to the API, I still get a 500 error', 
       tried: 'Stack overflow, Google, Facebook', 
       category: 'React', 
-      status: false, 
-      helper_id: "" 
+      status: 0, 
+      helper_id: null 
      },
      {
       id: 3,                    
@@ -30,8 +30,8 @@ const initialState =  [
       description: 'consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna', 
       tried: 'Facebook, Instagram', 
       category: 'SASS', 
-      status: false, 
-      helper_id: "" 
+      status: 0, 
+      helper_id: null 
      },
      {
       id: 4,                    
@@ -41,8 +41,8 @@ const initialState =  [
       description: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 
       tried: 'Stack overflow, Google, Facebook', 
       category: 'Redux', 
-      status: false, 
-      helper_id: "" 
+      status: 0, 
+      helper_id: null 
      },
      {
       id: 5,                    
@@ -52,8 +52,8 @@ const initialState =  [
       description: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 
       tried: 'Stack overflow, Google, Facebook', 
       category: 'CSS', 
-      status: false, 
-      helper_id: "" 
+      status: 0, 
+      helper_id: null 
      },
      {
       id: 6,                    
@@ -63,8 +63,8 @@ const initialState =  [
       description: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 
       tried: 'Google', 
       category: 'Java', 
-      status: false, 
-      helper_id: "" 
+      status: 0, 
+      helper_id: null 
      },
      {
       id: 7,                    
@@ -74,8 +74,8 @@ const initialState =  [
       description: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 
       tried: 'Bing', 
       category: 'Javascript', 
-      status: false, 
-      helper_id: "" 
+      status: 0, 
+      helper_id: null 
      },
      {
       id: 8,                    
@@ -85,8 +85,8 @@ const initialState =  [
       description: '"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ', 
       tried: 'Books', 
       category: 'Fortran', 
-      status: false, 
-      helper_id: "" 
+      status: 0, 
+      helper_id: null 
      }
  ] ;
 
@@ -116,7 +116,7 @@ export const ticketReducer = ( state = initialState, action) => {
 
             if(item.id === action.payload){
                 // ADD IF() STATEMENT - CHECK IF ALREDY ASSGINED
-                return{...item, status: true}
+                return{...item, status: 1 }
             }else{
                return item;
             }
@@ -127,7 +127,7 @@ export const ticketReducer = ( state = initialState, action) => {
 
             if(item.id === action.payload){
                 // ADD IF() STATEMENT - CHECK IF ALREDY ASSGINED
-                return{...item, status: false ,helper_id: ""}
+                return{...item, status: 0 ,helper_id: null}
             }else{
                return item;
             }

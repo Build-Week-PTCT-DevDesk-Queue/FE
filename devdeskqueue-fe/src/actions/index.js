@@ -1,4 +1,5 @@
 import axios from "axios";
+import axiosWithAuth from "../utils/AxiosWithAuth";
 
 export const initializeSmurf = () => {
    return dispatch => {
@@ -11,18 +12,31 @@ export const initializeSmurf = () => {
      };
 }
 
-  
+// GETs all tickets with helper_id null && status 0 =========================//
 export const getTickets = () => {
-
+   return dispatch => {
+       axiosWithAuth().get("/api/tickets")
+         .then( (response) => {
+            dispatch({ type: "GET_TICKETS", payload: response.data });
+         })
+         .catch(err => console.log("ERROR:", err));
+     };
 }
 
 export const createTicket = () => {
-   
+  
 }
 
 export const assignTicket = (id) => {
    return dispatch => {
-      dispatch( { type: "ASSIGN_TICKET", payload: id } )
+      // start here - 
+      axiosWithAuth().get("/api/tickets")
+      .then( (response) => {
+         dispatch({ type: "GET_TICKETS", payload: response.data });
+      })
+      .catch(err => console.log("ERROR:", err));
+
+      //dispatch( { type: "ASSIGN_TICKET", payload: id } )
    }
 }
 

@@ -28,7 +28,7 @@ function HelperAssigned(props){
         <TicketList>
            { props.state.map( item => {
 
-              if( item.helper_id === "TEMP_NAME" && item.status === false ){
+              if( item.helper_id === "TEMP_NAME" && item.status === 0 ){
 
                   return <Ticket key={item.id}>
                               <h3>{item.title}</h3>
