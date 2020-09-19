@@ -3,6 +3,8 @@ import { Route, Link, Switch } from "react-router-dom";
 import Home from "./components/HomePage";
 import Login from "./components/LoginForm";
 /*TEMP*/ import HelperTickets from '../src/components/helper_tickets'
+/*TEMP*/ import HelperAssigned from '../src/components/helper_assigned'
+/*TEMP*/ import HelperResolved from '../src/components/helper_resolved'
 import Registration from "./components/RegistrationForm";
 import './App.css';
 
@@ -24,9 +26,19 @@ function App() {
             <Route path="/registration">
                 <Registration />
             </Route>
+
+            {/* MIKES TEMPORARY ROUTING - REMOVE BEFORE MERGING */}
             <Route path="/helper-tickets">
                 <HelperTickets />
             </Route>
+            <Route path="/assigned-tickets">
+                <HelperAssigned />
+            </Route>
+            <Route path="/resolved-tickets">
+                <HelperResolved />
+            </Route>
+            {/* MIKES TEMPORARY ROUTING - REMOVE BEFORE MERGING */}
+
             <Route path="/">
               <Home />
             </Route>

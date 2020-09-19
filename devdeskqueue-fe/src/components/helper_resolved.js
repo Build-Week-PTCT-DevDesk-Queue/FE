@@ -3,9 +3,9 @@ import { useHistory } from 'react-router-dom'
 import styled from 'styled-components';
 //REDUX
 import { connect } from 'react-redux';
-import { reassignTicket, resolveTicket } from '../actions';
+import { reassignTicket, deleteTicket } from '../actions';
 
-function HelperAssigned(props){
+function HelperResolved(props){
 
    const  history  = useHistory();
 
@@ -21,14 +21,14 @@ function HelperAssigned(props){
 
    return (
       <TicketContainer> 
-        <h1>My Open Tickets</h1>
+        <h1>Resolved Tickets</h1>
         <button onClick={routeToAllTickets}>All Open Tickets</button>
         <button onClick={routeToMyTickets}>My Queue</button>
         <button onClick={routeToResolved}>All Resolved Tickets</button>
         <TicketList>
-           { props.state.map( item => {
+               { props.state.map( item => {
 
-              if( item.helper_id === "TEMP_NAME" && item.status === false ){
+               if( item.helper_id !== "" && item.status === true ){
 
                   return <Ticket key={item.id}>
                               <h3>{item.title}</h3>
@@ -37,12 +37,11 @@ function HelperAssigned(props){
                               <p>{item.tried}</p>
                               <p>Assigned to: {item.helper_id}</p>
                               <button onClick={ ()=> {props.reassignTicket(item.id);} }>Re-Assign</button>
-                              <button onClick={ ()=> {props.resolveTicket(item.id);} }>Resolve </button>
+                              <button onClick={ ()=> {props.deleteTicket(item.id);} }>Delete</button>
                            </Ticket>;
-                           
-              }//IF
+               }//if
 
-           })}
+               })}
         </TicketList>
       </TicketContainer>
     );
@@ -52,7 +51,7 @@ const mapStateToProps = (state) => {
    return {state};
  }
 
-export default connect( mapStateToProps, { reassignTicket, resolveTicket } )(HelperAssigned);
+export default connect( mapStateToProps, { reassignTicket, deleteTicket } )(HelperResolved);
 
 const TicketContainer = styled.div`
    button{

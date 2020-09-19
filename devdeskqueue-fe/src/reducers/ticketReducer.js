@@ -104,19 +104,50 @@ export const ticketReducer = ( state = initialState, action) => {
          return state.map( (item) => {
 
             if(item.id === action.payload){
-                return{...item, helper_id: "placeholderName"}
+                // ADD IF() STATEMENT - CHECK IF ALREDY ASSGINED
+                return{...item, helper_id: "TEMP_NAME"}
             }else{
                return item;
             }
-
          })
 
       case "RESOLVE_TICKET":
-         break;
+         return state.map( (item) => {
+
+            if(item.id === action.payload){
+                // ADD IF() STATEMENT - CHECK IF ALREDY ASSGINED
+                return{...item, status: true}
+            }else{
+               return item;
+            }
+         })
       case "REASSIGN_TICKET":
-         break;
+         
+         return state.map( (item) => {
+
+            if(item.id === action.payload){
+                // ADD IF() STATEMENT - CHECK IF ALREDY ASSGINED
+                return{...item, status: false ,helper_id: ""}
+            }else{
+               return item;
+            }
+         })
       case "DELETE_TICKET":
-         break;
+         
+         state.forEach( (item) => {
+         
+            if(item.id === action.payload){
+               
+                if( item.helper_id === "TEMP_NAME" ){
+                  //CALL DELETE
+                  //UPDATE STATE
+                  const updatedList = state.filter( (item) => { return item.id !== action.payload})
+                  return updatedList;
+                }else{
+                   alert("You can only delete your own tickets");
+                }
+            }//if
+         })
       default:
          return state;
    }

@@ -1,4 +1,5 @@
-import React, { } from "react";
+import React from "react";
+import { useHistory } from 'react-router-dom';
 import styled from 'styled-components';
 //REDUX
 import { connect } from 'react-redux';
@@ -6,8 +7,24 @@ import { assignTicket } from '../actions';
 
 function HelperTickets(props){
 
+   const  history  = useHistory();
+
+   const routeToAllTickets = () => {
+      history.push("/helper-tickets")
+   }
+   const routeToMyTickets = () => {
+      history.push("/assigned-tickets")
+   }
+   const routeToResolved = () => {
+      history.push("/resolved-tickets")
+   }
+
    return (
       <TicketContainer> 
+        <h1>All Open Tickets</h1>
+        <button onClick={routeToAllTickets}>All Open Tickets</button>
+        <button onClick={routeToMyTickets}>My Queue</button>
+        <button onClick={routeToResolved}>All Resolved Tickets</button>
         <TicketList>
            { props.state.map( item => {
            return <Ticket key={item.id}>
@@ -31,7 +48,10 @@ const mapStateToProps = (state) => {
 export default connect( mapStateToProps, { assignTicket } )(HelperTickets);
 
 const TicketContainer = styled.div`
-
+   button{
+      margin: 1em;
+      padding: .5em .75em;
+   }
 `;
 
 const TicketList = styled.div`
