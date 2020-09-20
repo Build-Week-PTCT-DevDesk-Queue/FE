@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useHistory } from "react-router-dom";
-//import { axiosWithAuth } from '../utils/AxiosWithAuth';
+import { Link } from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
 
@@ -18,9 +17,6 @@ const regFormSchema = yup.object().shape({
 })
 
 const Registration = () => {
-
-    const history = useHistory();
-
     const optionValue = null;
     const [regState, setRegState] = useState({
         username: "",
@@ -52,17 +48,15 @@ const Registration = () => {
 
     const submitForm = (e) => {
         e.preventDefault();
-        //ADDED==================================================================
-        console.log(regState)
-        axios.post("https://devdesk2-be.herokuapp.com/api/auth/register", regState)
-            .then((res) => {  
-               console.log(res)
-               //window.localStorage.setItem("token", res.data.payload);
-               // redirect
-            })
-            .catch((err) => console.log(err));
-            // ADD IF STATEMENT FOR HELPER AND ID
-            history.push("/helper-tickets");
+        console.log(regState);
+
+        axios.post( 'https://devdesk2-be.herokuapp.com/api/auth/register', regState)
+         .then( (res) => {
+            console.log(res)
+         })
+         .catch( (err) => {
+            console.log(err)
+         })
 
         setRegState({
             username: "",
@@ -84,22 +78,17 @@ const Registration = () => {
             <h1>Ready to get some help?</h1>
             <p id="registration-p-tag">Create an account or <Link className="form-links" to="/login" >Login</Link></p>
         </header>
-
-
         <form onSubmit={submitForm}>
 
-
         <label htmlFor="name-reg"><h4>Choose a UserName</h4>
-        {errorRegState.username.length > 0 ? <p className="error-message">{errorRegState.username}</p> : null}
+        {errorRegState.username.length > 0 ? <p className="error-message">{errorRegState.name}</p> : null}
         </label>
-        <input name="name" type="text" placeholder="username" onChange={inputChange} value={regState.username}/>
-
+        <input name="username" type="text" placeholder="username" onChange={inputChange} value={regState.username}/>
 
         <label htmlFor="password"><h4>Set a Password</h4>
         {errorRegState.password.length > 0 ? <p className="error-message">{errorRegState.password}</p> : null}
         </label>
         <input type="password" name="password" placeholder="password" onChange={inputChange} value={regState.password}/>
-
 
         <label htmlFor="role"><h4>Who needs help?</h4>
         <p className="error-message">{errorRegState.role}</p>
