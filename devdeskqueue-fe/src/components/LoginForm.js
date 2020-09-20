@@ -41,7 +41,7 @@ const Login = () => {
         axiosWithAuth().post( 'api/auth/login', loginState )
         .then( (res) => {
            console.log(res)
-           window.localStorage.setItem("token", res.config.headers.authorization );
+           window.localStorage.setItem("token", res.cookies );
         
         })
         .catch( (err) => {
