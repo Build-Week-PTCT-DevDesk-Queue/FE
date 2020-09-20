@@ -5,6 +5,7 @@ import Login from "./components/LoginForm";
 /*TEMP*/ import HelperTickets from '../src/components/helper_tickets'
 /*TEMP*/ import HelperAssigned from '../src/components/helper_assigned'
 /*TEMP*/ import HelperResolved from '../src/components/helper_resolved'
+/*TEMP*/ import TicketForm from '../src/components/TicketForm'
 import Registration from "./components/RegistrationForm";
 import './App.css';
 
@@ -16,7 +17,8 @@ function App() {
             <nav>
                 <Link className="link" to="/login" >Login</Link>
                 <Link className="link" to="/registration" >New here? Register</Link>
-                <Link className="link" to="/helper-tickets" >temp- delete this</Link>
+                <Link className="link" to="/helper-tickets" >*helper</Link>
+                <Link className="link" to="/ticket-form" >*form</Link>
             </nav>
         </header>
         <Switch>
@@ -36,6 +38,9 @@ function App() {
             </Route>
             <Route path="/resolved-tickets">
                 <HelperResolved />
+            </Route>
+            <Route path="/ticket-form">
+                <TicketForm />
             </Route>
             {/* MIKES TEMPORARY ROUTING - REMOVE BEFORE MERGING */}
 

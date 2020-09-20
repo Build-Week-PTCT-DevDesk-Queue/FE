@@ -1,20 +1,21 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import axiosWithAuth from '../utils/AxiosWithAuth';
 import * as yup from "yup";
 
 const loginSchema = yup.object().shape({
-    name: yup.string().required("Must fill in username"),
+    username: yup.string().required("Must fill in username"),
     password: yup.string().required("Must fill in password")
 })
 
 const Login = () => {
     const [loginState, setLoginState] = useState({
-        name: "",
+        username: "",
         password: ""
     });
 
     const [errorsLogin, setErrorsLogin] = useState({
-        name: "",
+        username: "",
         password: ""
     })
 
@@ -36,9 +37,19 @@ const Login = () => {
     }
     const submitForm = (e) => {
         e.preventDefault();
-        console.log("Form submited!!");
+        
+        axiosWithAuth().post( 'api/auth/login', loginState )
+        .then( (res) => {
+           console.log(res)
+           window.localStorage.setItem("token", res.config.headers.authorization );
+        
+        })
+        .catch( (err) => {
+           console.log(err)
+        })
+
         setLoginState({
-            name: "",
+            username: "",
             password: ""
         });
         
@@ -50,9 +61,9 @@ return(
     <h1>Let's get started</h1>
     <form onSubmit={submitForm}>
         <label htmlFor="name"><h4>Username</h4>
-        {errorsLogin.name.length > 0 ? <p className="error-message">{errorsLogin.name}</p> : null}
+        {errorsLogin.username.length > 0 ? <p className="error-message">{errorsLogin.username}</p> : null}
         </label>
-        <input name="name" type="text" placeholder="username" onChange={inputChange} />
+        <input name="username" type="text" placeholder="username" onChange={inputChange} />
 
         <label htmlFor="password"><h4>Password</h4>
         {errorsLogin.password.length > 0 ? <p className="error-message">{errorsLogin.password}</p> : null}
