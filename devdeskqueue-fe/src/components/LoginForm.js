@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axiosWithAuth from '../utils/AxiosWithAuth';
 import * as yup from "yup";
+import cookie from 'cookie'
 
 const loginSchema = yup.object().shape({
     username: yup.string().required("Must fill in username"),
@@ -41,7 +42,9 @@ const Login = () => {
         axiosWithAuth().post( 'api/auth/login', loginState )
         .then( (res) => {
            console.log(res)
-           window.localStorage.setItem("token", res.cookies );
+           const cookies = cookie.parse(document.cookie)
+           console.log( "Cookies: ",cookies )
+           //window.localStorage.setItem("token", res.cookies );
         
         })
         .catch( (err) => {

@@ -7,6 +7,9 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "axios": "^0.20.0",
+    "cookie": "^0.4.1",
+    "cookie-parser": "^1.4.5",
+    "js-cookie": "^2.2.1",
     "react": "^16.13.1",
     "react-context-api": "^1.0.2",
     "react-dom": "^16.13.1",
@@ -17,6 +20,7 @@
     "redux": "^4.0.5",
     "redux-thunk": "^2.3.0",
     "styled-components": "^5.2.0",
+    "universal-cookie": "^4.0.3",
     "yup": "^0.29.3"
   },
   "scripts": {

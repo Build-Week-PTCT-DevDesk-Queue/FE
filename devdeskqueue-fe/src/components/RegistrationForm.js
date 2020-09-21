@@ -48,7 +48,7 @@ const Registration = () => {
 
     const submitForm = (e) => {
         e.preventDefault();
-        console.log(regState);
+        //console.log(regState);
 
         axios.post( 'https://devdesk2-be.herokuapp.com/api/auth/register', regState)
          .then( (res) => {

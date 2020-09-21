@@ -20,13 +20,13 @@ export const createTicket = () => {
 export const assignTicket = (id) => {
    return dispatch => {
       // start here - 
-      axiosWithAuth().get("/api/tickets")
-      .then( (response) => {
-         dispatch({ type: "GET_TICKETS", payload: response.data });
-      })
-      .catch(err => console.log("ERROR:", err));
+      // axiosWithAuth().get("/api/tickets")
+      // .then( (response) => {
+      //    dispatch({ type: "GET_TICKETS", payload: response.data });
+      // })
+      // .catch(err => console.log("ERROR:", err));
 
-      //dispatch( { type: "ASSIGN_TICKET", payload: id } )
+      dispatch( { type: "ASSIGN_TICKET", payload: id } )
    }
 }
 
