@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import axiosWithAuth from '../utils/AxiosWithAuth';
 import * as yup from "yup";
+
 import cookie from 'cookie'
+import { withCookies } from 'react-cookie'
 
 const loginSchema = yup.object().shape({
     username: yup.string().required("Must fill in username"),
@@ -20,6 +22,8 @@ const Login = () => {
         password: ""
     })
 
+    const history = useHistory();
+    
     const validate = (e) => {
         yup
          .reach(loginSchema, e.target.name)
@@ -42,10 +46,14 @@ const Login = () => {
         axiosWithAuth().post( 'api/auth/login', loginState )
         .then( (res) => {
            console.log(res)
-           const cookies = cookie.parse(document.cookie)
-           console.log( "Cookies: ",cookies )
-           //window.localStorage.setItem("token", res.cookies );
         
+           // ROUTING TO CORRECT COMPONENTS
+           if(res.data.role === 'helper'){
+             history.push(`/helper-tickets/${res.data.id}`)
+           }
+           if(res.data.role === 'student'){
+            history.push("/NEED TO ADD THIS")
+          }
         })
         .catch( (err) => {
            console.log(err)

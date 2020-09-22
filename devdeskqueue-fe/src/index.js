@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {BrowserRouter as Router} from "react-router-dom";
+//COOKIE IMPORT
+//import { CookiesProvider} from 'react-cookie';
 
 //REDUX IMPORTS
 import { ticketReducer } from './reducers/ticketReducer';
@@ -12,11 +14,13 @@ import thunk from 'redux-thunk';
 let store = createStore( ticketReducer, applyMiddleware(thunk));
 
 ReactDOM.render(
+  
   <Provider store={store}>
       <Router>
          <App />
       </Router>
   </Provider>
+
   ,
   document.getElementById('root')
 );

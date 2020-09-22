@@ -6,10 +6,12 @@ import Login from "./components/LoginForm";
 /*TEMP*/ import HelperAssigned from '../src/components/helper_assigned'
 /*TEMP*/ import HelperResolved from '../src/components/helper_resolved'
 /*TEMP*/ import TicketForm from '../src/components/TicketForm'
+import PrivateRoute from './utils/PrivateRoute'
 import Registration from "./components/RegistrationForm";
 import './App.css';
 
 function App() {
+
   return (
     <div className="App">
       <header id="home-page-header">
@@ -30,15 +32,18 @@ function App() {
             </Route>
 
             {/* MIKES TEMPORARY ROUTING - REMOVE BEFORE MERGING */}
-            <Route path="/helper-tickets">
+            <PrivateRoute path="/helper-tickets/:id" component={HelperTickets} /> 
+            {/* <Route path="/helper-tickets/:id">
                 <HelperTickets />
-            </Route>
-            <Route path="/assigned-tickets">
+            </Route> */}
+            <PrivateRoute path="/assigned-tickets/:id" component={HelperAssigned} /> 
+            {/* <Route path="/assigned-tickets/:id">
                 <HelperAssigned />
-            </Route>
-            <Route path="/resolved-tickets">
+            </Route> */}
+            <PrivateRoute path="/resolved-tickets/:id" component={HelperResolved} /> 
+            {/* <Route path="/resolved-tickets/:id">
                 <HelperResolved />
-            </Route>
+            </Route> */}
             <Route path="/ticket-form">
                 <TicketForm />
             </Route>

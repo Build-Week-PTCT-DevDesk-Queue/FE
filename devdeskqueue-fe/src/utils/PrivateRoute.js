@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Component } from "react";
 import { Route, Redirect } from "react-router-dom";
-
+import cookie from "cookie"
 /*
   Private Route rules:
   1. It has the same API as <Route />. - needs to match the same props as the replaced component
@@ -8,28 +8,56 @@ import { Route, Redirect } from "react-router-dom";
   3. It checks if the user is authenticated, if they are, it renders the “component” prop. If not, it redirects the user to /login.
 */
 
-
-// FUNCTION           
-// <deference>  component needs to be separated, THEN ...rest of the props
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  // const Component = component;
-  const token = window.localStorage.getItem("token");
 
-  //RETURNS A <ROUTE> COMPONENT
-  return (
-    <Route {...rest}  // rest operator takes an object and destructure it, and rebuild it
-      // render prop that returns a component
-      render={ (props) => {
-        if (token) {
-          // return the component
-          return <Component {...props} />;
-        } else {
-          // redirect the user to /login
-          return <Redirect to="/login" />;
-        }
-      }}
-    />
-  );
-};
+   const checkAuth = () => {
+      //  const cookies = cookie.parse(document.cookie);
+      //  if (cookies.id_token) {
+      //    console.log(cookies)
+      //    return true;
+      //  }
+      //    return false;
+      return true;
+     };
 
-export default PrivateRoute;
+   return (
+   <Route
+     {...rest}
+     render={props =>
+       checkAuth() === true ? (
+         <Component {...props} />
+       ) : (
+         <Redirect to={"/login"}/>
+       )
+     }
+   />
+   );
+
+   };
+   
+ export default PrivateRoute;
+
+ // FUNCTION           
+// <deference>  component needs to be separated, THEN ...rest of the props
+// const PrivateRoute = ({ component: Component, ...rest }) => {
+//    // const Component = component;
+//    const token = window.localStorage.getItem("token");
+ 
+//    //RETURNS A <ROUTE> COMPONENT
+//    return (
+//      <Route {...rest}  // rest operator takes an object and destructure it, and rebuild it
+//        // render prop that returns a component
+//        render={ (props) => {
+//          if (token) {
+//            // return the component
+//            return <Component {...props} />;
+//          } else {
+//            // redirect the user to /login
+//            return <Redirect to="/login" />;
+//          }
+//        }}
+//      />
+//    );
+//  };
+ 
+//  export default PrivateRoute;

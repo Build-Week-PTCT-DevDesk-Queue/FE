@@ -1,29 +1,36 @@
 import React, { useEffect } from "react";
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import cookie from 'cookie'
 //REDUX
 import { connect } from 'react-redux';
 import { assignTicket } from '../actions';
+import axios from 'axios'
 
 function HelperTickets(props){
-   console.log(props)
-   useEffect( ()=> {
 
+   //console.log(props)
+
+   useEffect( ()=> {
+      axios.get('https://devdesk2-be.herokuapp.com/api/tickets', {withCredentials: true} )
+      .then( (res) => console.log(res))
+      .catch( (err) => console.log(err))
    },[])
 
-   const  history  = useHistory();
+   const history  = useHistory();
+   const { id }   = useParams();
+   //console.log("COOKIES ", cookie.parse(document.cookie) )
 
    const routeToAllTickets = () => {
-      history.push("/helper-tickets")
+      history.push(`/helper-tickets/${id}`)
    }
    const routeToMyTickets = () => {
       //NEED TO GET HELPER TICKETS FROM API, FILTER BY STATUS TO DISPLAY
-
-      history.push("/assigned-tickets")
+      history.push(`/assigned-tickets/${id}`)
    }
    const routeToResolved = () => {
         //NEED TO GET HELPER TICKETS FROM API , THEN FILTER BY STATUS TO DISPLAY
-      history.push("/resolved-tickets")
+      history.push(`/resolved-tickets/${id}`)
    }
 
    return (
@@ -41,7 +48,7 @@ function HelperTickets(props){
                                  <p>{item.description}</p>
                                  <p>{item.tried}</p>
                                  <p>Assigned to: {item.helper_id}</p>
-                                 <button onClick={ ()=> {props.assignTicket(item.id);} }>Help Student</button>
+                                 <button onClick={ ()=> {props.assignTicket(item.id, id);} }>Help Student</button>
                               </Ticket>;
                }
                })}

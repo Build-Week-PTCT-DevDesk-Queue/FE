@@ -99,13 +99,13 @@ export const ticketReducer = ( state = initialState, action) => {
          break;
       case "CREATE_TICKET":
          break;
-      case "ASSIGN_TICKET":
 
+      case "ASSIGN_TICKET":
+         //console.log( "PAYLOAD", action.payload.ticketId )
          return state.map( (item) => {
 
-            if(item.id === action.payload){
-                // ADD IF() STATEMENT - CHECK IF ALREDY ASSGINED
-                return{...item, helper_id: "TEMP_NAME"}
+            if(item.id === action.payload.ticketId){
+                return{...item, helper_id: action.payload.helperId }
             }else{
                return item;
             }

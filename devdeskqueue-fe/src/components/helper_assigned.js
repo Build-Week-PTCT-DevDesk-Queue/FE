@@ -1,5 +1,5 @@
 import React, { } from "react";
-import { useHistory } from 'react-router-dom'
+import { useHistory, useParams } from 'react-router-dom'
 import styled from 'styled-components';
 //REDUX
 import { connect } from 'react-redux';
@@ -8,15 +8,16 @@ import { reassignTicket, resolveTicket } from '../actions';
 function HelperAssigned(props){
 
    const  history  = useHistory();
+   const { id }   = useParams();
 
    const routeToAllTickets = () => {
-      history.push("/helper-tickets")
+      history.push(`/helper-tickets/${id}`)
    }
    const routeToMyTickets = () => {
-      history.push("/assigned-tickets")
+      history.push(`/assigned-tickets/${id}`)
    }
    const routeToResolved = () => {
-      history.push("/resolved-tickets")
+      history.push(`/resolved-tickets/${id}`)
    }
 
    return (
@@ -28,7 +29,7 @@ function HelperAssigned(props){
         <TicketList>
            { props.state.map( item => {
 
-              if( item.helper_id === "TEMP_NAME" && item.status === 0 ){
+              if( item.helper_id === id && item.status === 0 ){
 
                   return <Ticket key={item.id}>
                               <h3>{item.title}</h3>
