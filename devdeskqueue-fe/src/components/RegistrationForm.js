@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
-import axios from "axios";
+
 
 
 const regFormSchema = yup.object().shape({
-    name: yup.string().required("Must choose a username!")
+    username: yup.string().required("Must choose a username!")
     .min(2, "Username must be at least 2 characters long")
     .max(20, "Username must not exceed 20 characters")
     .matches(/[a-zA-z]/, "Username must contain letters only"),
@@ -17,14 +17,13 @@ const regFormSchema = yup.object().shape({
 })
 
 const Registration = () => {
-    const optionValue = null;
     const [regState, setRegState] = useState({
-        name: "",
+        username: "",
         password: "",
         role: ""
     });
     const [errorRegState, setErrorRegState] = useState({
-        name: "",
+        username: "",
         password: "",
         role: "Must choose an option"
     });
@@ -50,7 +49,7 @@ const Registration = () => {
         e.preventDefault();
         console.log("form submited!!");
         setRegState({
-            name: "",
+            username: "",
             password: "",
             role: ""
         })
@@ -71,10 +70,10 @@ const Registration = () => {
         </header>
         <form onSubmit={submitForm}>
 
-        <label htmlFor="name-reg"><h4>Choose a UserName</h4>
-        {errorRegState.name.length > 0 ? <p className="error-message">{errorRegState.name}</p> : null}
+        <label htmlFor="username"><h4>Choose a UserName</h4>
+        {errorRegState.username.length > 0 ? <p className="error-message">{errorRegState.username}</p> : null}
         </label>
-        <input name="name" type="text" placeholder="username" onChange={inputChange} value={regState.name}/>
+        <input name="username" type="text" placeholder="username" onChange={inputChange} value={regState.username}/>
 
         <label htmlFor="password"><h4>Set a Password</h4>
         {errorRegState.password.length > 0 ? <p className="error-message">{errorRegState.password}</p> : null}
