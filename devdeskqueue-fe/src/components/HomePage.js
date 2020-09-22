@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useHistory } from "react-router-dom";
 import image from "../safe.jpg";
 import styled, { keyframes } from "styled-components";
@@ -13,7 +13,7 @@ animation: 4s ${bounceAnimation};
 
 
 const Home = () => {
-    // const [data, setData] = useState(dummyDataAdela);
+    // const [data, setData] = useState(dummyDataAdela); for adela
 
     const history = useHistory();
     //console.log("history: ", history);
@@ -27,7 +27,7 @@ const Home = () => {
             <div className="center-text"><h1>The app that makes it easy for you to get information about any school issues you might encounter!</h1></div>
         </div>
             <BouncyButton className="home-page-button" onClick={navToLoginForm}>Get Started</BouncyButton>
-            {/* <TicketCard data={data} /> */}
+            {/* <TicketCard data={data} /> for adela */}
         </>
     )
 }

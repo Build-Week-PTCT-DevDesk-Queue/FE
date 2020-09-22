@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import * as yup from "yup";
-import axios from "axios";
+
 
 
 const regFormSchema = yup.object().shape({
@@ -17,7 +17,6 @@ const regFormSchema = yup.object().shape({
 })
 
 const Registration = () => {
-    const optionValue = null;
     const [regState, setRegState] = useState({
         name: "",
         password: "",

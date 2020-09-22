@@ -3,18 +3,18 @@ import { Link } from "react-router-dom";
 import * as yup from "yup";
 
 const loginSchema = yup.object().shape({
-    name: yup.string().required("Must fill in username"),
+    username: yup.string().required("Must fill in username"),
     password: yup.string().required("Must fill in password")
 })
 
 const Login = () => {
     const [loginState, setLoginState] = useState({
-        name: "",
+        username: "",
         password: ""
     });
 
     const [errorsLogin, setErrorsLogin] = useState({
-        name: "",
+        username: "",
         password: ""
     })
 
@@ -38,7 +38,7 @@ const Login = () => {
         e.preventDefault();
         console.log("Form submited!!");
         setLoginState({
-            name: "",
+            username: "",
             password: ""
         });
         
@@ -49,15 +49,15 @@ return(
     
     <h1>Let's get started</h1>
     <form onSubmit={submitForm}>
-        <label htmlFor="name"><h4>Username</h4>
-        {errorsLogin.name.length > 0 ? <p className="error-message">{errorsLogin.name}</p> : null}
+        <label htmlFor="username"><h4>Username</h4>
+        {errorsLogin.username.length > 0 ? <p className="error-message">{errorsLogin.username}</p> : null}
         </label>
-        <input name="name" type="text" placeholder="username" onChange={inputChange} />
+        <input name="username" type="text" placeholder="username" onChange={inputChange} value={loginState.username} />
 
         <label htmlFor="password"><h4>Password</h4>
         {errorsLogin.password.length > 0 ? <p className="error-message">{errorsLogin.password}</p> : null}
         </label>
-        <input type="password" name="password" placeholder="password" onChange={inputChange}/>
+        <input type="password" name="password" placeholder="password" onChange={inputChange} value={loginState.password} />
 
         <button className="form-button" type="submit">Login</button>
 
