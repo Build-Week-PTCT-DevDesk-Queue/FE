@@ -3,8 +3,9 @@ import { useHistory } from "react-router-dom";
 import image from "../safe.jpg";
 
 const Home = () => {
+   
     const history = useHistory();
-    //console.log("history: ", history);
+    
     const navToLoginForm = (e) => {
         history.push('/login');
     }

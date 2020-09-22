@@ -1,4 +1,6 @@
 
+
+// INITIAL STATE NEEDS TO COME FROM THE SERVER
 const initialState = [
    {
       id: 1,                           //automatically assigned by database 
@@ -97,6 +99,8 @@ export const ticketReducer = ( state = initialState, action) => {
 
       case "GET_TICKETS":
          break;
+      case "GET_TICKETS_BY_HELPER_ID":
+         break;
       case "CREATE_TICKET":
          break;
 
@@ -132,22 +136,22 @@ export const ticketReducer = ( state = initialState, action) => {
                return item;
             }
          })
-      case "DELETE_TICKET":
+      // case "DELETE_TICKET":
          
-         state.forEach( (item) => {
+      //    state.forEach( (item) => {
          
-            if(item.id === action.payload){
+      //       if(item.id === action.payload){
                
-                if( item.helper_id === "TEMP_NAME" ){
-                  //CALL DELETE
-                  //UPDATE STATE
-                  const updatedList = state.filter( (item) => { return item.id !== action.payload})
-                  return updatedList;
-                }else{
-                   alert("You can only delete your own tickets");
-                }
-            }//if
-         })
+      //           if( item.helper_id === "TEMP_NAME" ){
+      //             //CALL DELETE
+      //             //UPDATE STATE
+      //             const updatedList = state.filter( (item) => { return item.id !== action.payload})
+      //             return updatedList;
+      //           }else{
+      //              alert("You can only delete your own tickets");
+      //           }
+      //       }//if
+      //    })
       default:
          return state;
    }

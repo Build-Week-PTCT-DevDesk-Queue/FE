@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import cookie from 'cookie'
 //REDUX
 import { connect } from 'react-redux';
 import { assignTicket } from '../actions';
@@ -12,14 +11,13 @@ function HelperTickets(props){
    //console.log(props)
 
    useEffect( ()=> {
-      axios.get('https://devdesk2-be.herokuapp.com/api/tickets', {withCredentials: true} )
+      axios.get('https://devdesk2-be.herokuapp.com/api/tickets')
       .then( (res) => console.log(res))
       .catch( (err) => console.log(err))
    },[])
 
    const history  = useHistory();
    const { id }   = useParams();
-   //console.log("COOKIES ", cookie.parse(document.cookie) )
 
    const routeToAllTickets = () => {
       history.push(`/helper-tickets/${id}`)

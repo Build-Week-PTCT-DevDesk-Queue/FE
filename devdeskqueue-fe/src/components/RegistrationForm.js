@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import * as yup from "yup";
 import axios from "axios";
 
@@ -17,6 +17,9 @@ const regFormSchema = yup.object().shape({
 })
 
 const Registration = () => {
+
+   const history = useHistory();
+
     const optionValue = null;
     const [regState, setRegState] = useState({
         username: "",
@@ -53,6 +56,14 @@ const Registration = () => {
         axios.post( 'https://devdesk2-be.herokuapp.com/api/auth/register', regState)
          .then( (res) => {
             console.log(res)
+
+           // ROUTING TO CORRECT COMPONENTS
+           if(res.data.role === 'helper'){
+            history.push(`/helper-tickets/${res.data.id}`)
+          }
+          if(res.data.role === 'student'){
+           history.push("/NEED TO ADD THIS")
+          }
          })
          .catch( (err) => {
             console.log(err)

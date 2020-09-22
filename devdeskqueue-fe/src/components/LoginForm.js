@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
-import axiosWithAuth from '../utils/AxiosWithAuth';
+import axios from 'axios'
 import * as yup from "yup";
 
 import cookie from 'cookie'
@@ -43,7 +43,7 @@ const Login = () => {
     const submitForm = (e) => {
         e.preventDefault();
         
-        axiosWithAuth().post( 'api/auth/login', loginState )
+        axios.post( 'https://devdesk2-be.herokuapp.com/api/auth/login', loginState )
         .then( (res) => {
            console.log(res)
         
@@ -53,7 +53,7 @@ const Login = () => {
            }
            if(res.data.role === 'student'){
             history.push("/NEED TO ADD THIS")
-          }
+           }
         })
         .catch( (err) => {
            console.log(err)
