@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import * as yup from "yup";
+import axios from 'axios';
 
 const loginSchema = yup.object().shape({
     username: yup.string().required("Must fill in username"),
@@ -9,7 +10,7 @@ const loginSchema = yup.object().shape({
 
 const Login = () => {
 
-   // does it work to merge
+    const history = useHistory();
 
     const [loginState, setLoginState] = useState({
         username: "",
@@ -39,6 +40,24 @@ const Login = () => {
     }
     const submitForm = (e) => {
         e.preventDefault();
+
+        axios.post( 'https://devdesk2-be.herokuapp.com/api/auth/login', loginState )
+        .then( (res) => {
+           console.log(res)
+        
+           // ROUTING TO CORRECT COMPONENTS
+           if(res.data.role === 'helper'){
+             history.push(`/helper-tickets/${res.data.id}`)
+           }
+           if(res.data.role === 'student'){
+            history.push("/NEED TO ADD THIS******")
+           }
+        })
+        .catch( (err) => {
+           console.log(err)
+        })
+
+
         console.log("Form submited!!");
         setLoginState({
             username: "",

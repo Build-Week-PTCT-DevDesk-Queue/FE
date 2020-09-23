@@ -6,7 +6,7 @@ import {BrowserRouter as Router} from "react-router-dom";
 
 
 //REDUX IMPORTS
-import { ticketReducer } from './reducers/ticketReducer';
+import { ticketReducer } from '../src/components/reducers/ticketReducer';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';

@@ -3,7 +3,7 @@ import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 //REDUX
 import { connect } from 'react-redux';
-import { assignTicket } from '../actions/ticketActions';
+import { assignTicket } from './actions/ticketActions';
 import axios from 'axios'
 
 function HelperTickets(props){
