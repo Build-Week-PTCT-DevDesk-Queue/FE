@@ -50,7 +50,7 @@ const Login = () => {
              history.push(`/helper-tickets/${res.data.id}`)
            }
            if(res.data.role === 'student'){
-            history.push("/NEED TO ADD THIS******")
+            history.push('/tickets')
            }
         })
         .catch( (err) => {

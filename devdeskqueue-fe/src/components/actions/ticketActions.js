@@ -1,9 +1,10 @@
 import axios from "axios";
+import axiosWithAuth from '../../utils/AxiosWithAuth'
 
 // GETs all tickets with helper_id null && status 0 =========================//
 export const getTickets = () => {
    return dispatch => {
-       axios.get("https://devdesk2-be.herokuapp.com/api/tickets")
+       axiosWithAuth().get("https://devdesk2-be.herokuapp.com/api/tickets")
          .then( (response) => {
             console.log("GET IN ACTIONS", response)
             dispatch({ type: "GET_TICKETS", payload: response.data });
@@ -13,6 +14,7 @@ export const getTickets = () => {
 }
 
 export const createTicket = () => {
+
   
 }
 

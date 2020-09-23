@@ -97,14 +97,15 @@ export const ticketReducer = ( state = initialState, action) => {
    
    switch(action.type) {
 
-      case "GET_TICKETS":
-         break;
-      case "GET_TICKETS_BY_HELPER_ID":
-         break;
-      case "CREATE_TICKET":
-         break;
+      // case "GET_TICKETS":
+      //    break;
+      // case "GET_TICKETS_BY_HELPER_ID":
+      //    break;
+      // case "CREATE_TICKET":
+      //    break;
 
       case "ASSIGN_TICKET":
+
          //console.log( "PAYLOAD", action.payload.ticketId )
          return state.map( (item) => {
 
@@ -125,6 +126,7 @@ export const ticketReducer = ( state = initialState, action) => {
                return item;
             }
          })
+         
       case "REASSIGN_TICKET":
          
          return state.map( (item) => {
@@ -136,6 +138,7 @@ export const ticketReducer = ( state = initialState, action) => {
                return item;
             }
          })
+
       // case "DELETE_TICKET":
          
       //    state.forEach( (item) => {

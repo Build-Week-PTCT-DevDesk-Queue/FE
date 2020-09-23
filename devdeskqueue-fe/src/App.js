@@ -13,6 +13,7 @@ import HelperResolved from '../src/components/helper_resolved'
 import TicketForm from '../src/components/TicketForm'
 import PrivateRoute from './utils/PrivateRoute'
 
+import Student from './components/students/Student'
 function App() {
   return (
     <div className="App">
@@ -24,11 +25,13 @@ function App() {
             <Route path="/registration">
                 <Registration />
             </Route>
+            <PrivateRoute path = "/tickets" component={Student} />
             {/* HELPER PAGES */}
             <PrivateRoute path="/helper-tickets/:id" component={HelperTickets} /> 
             <PrivateRoute path="/assigned-tickets/:id" component={HelperAssigned} /> 
             <PrivateRoute path="/resolved-tickets/:id" component={HelperResolved} /> 
             <Route path="/">
+
               <Home />
             </Route>
         </Switch>

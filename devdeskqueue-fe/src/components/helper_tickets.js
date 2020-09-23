@@ -10,11 +10,11 @@ function HelperTickets(props){
 
    //console.log(props)
 
-   useEffect( ()=> {
-      axios.get('https://devdesk2-be.herokuapp.com/api/tickets')
-      .then( (res) => console.log(res))
-      .catch( (err) => console.log(err))
-   },[])
+   // useEffect( ()=> {
+   //    axios.get('https://devdesk2-be.herokuapp.com/api/tickets')
+   //    .then( (res) => console.log(res))
+   //    .catch( (err) => console.log(err))
+   // },[])
 
    const history  = useHistory();
    const { id }   = useParams();
