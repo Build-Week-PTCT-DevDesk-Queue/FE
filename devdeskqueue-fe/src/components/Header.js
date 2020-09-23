@@ -17,6 +17,7 @@ return (
             <nav>
                 <Link className="link" to="/login" >Login</Link>
                 <Link className="link" to="/registration" >New here? Register</Link>
+                <Link className="link" to="/">Log out</Link>
             </nav>
     </header>
 )

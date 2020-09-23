@@ -162,3 +162,35 @@ form{
     font-size: 70%;
   }
 }
+
+.student-card{
+  background-color: #fff;
+  border: 0;
+  box-shadow: 0 -1px 0 #cf7171, 0 0 2px rgba(199, 78, 78, 0.12),
+    0 2px 4px rgba(194, 72, 72, 0.24);
+  padding: 70px 0;
+  cursor: pointer;
+  position: relative;
+  margin: 1rem auto;
+  width: 80%;
+  display: inline-block;
+   font-size: 0.8rem;
+   
+}
+.ticket-discription {
+  padding: 4px 0;
+  
+
+}
+.tried{
+  padding: 4px 0;
+  
+}
+.more-info{
+  padding: 5px 0;
+  
+}
+.tic-button{
+  margin: 1em;
+  padding: .5em .75em;
+}
