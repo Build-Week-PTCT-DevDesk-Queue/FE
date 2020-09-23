@@ -51,7 +51,6 @@ color: white;
 text-decoration: none;
 }
 .form-button{
-/* Inactive Grey */
 width: 50%;
 height: 1.5rem;
 margin: 1rem;
@@ -180,9 +179,6 @@ form{
 }
 .ticket-discription {
   padding: 4px 0;
-  
-  
-
 }
 .tried{
   padding: 4px 0;

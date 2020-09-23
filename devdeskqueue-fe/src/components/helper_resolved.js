@@ -58,6 +58,7 @@ const TicketContainer = styled.div`
    button{
       margin: 1em;
       padding: .5em .75em;
+      cursor: pointer;
    }
 `;
 
@@ -72,7 +73,17 @@ const Ticket = styled.div`
    width: 20%;
    padding: 1em;
    margin: 1em 0;
-
+   background-color: #fff;
+  border: 0;
+  box-shadow: 0 -1px 0 #cf7171, 0 0 2px rgba(199, 78, 78, 0.12),
+    0 2px 4px rgba(194, 72, 72, 0.24);
+  padding: 1rem;
+  position: relative;
+  margin: 1rem auto;
+  width: 80%;
+  display: inline-block;
+   font-size: 0.8rem;
+   text-align: left;
    button{
       margin: 0 .25em;
    }
