@@ -7,7 +7,11 @@ import HeaderComp from "./components/Header";
 import Footer from "./components/Footer";
 import './App.css';
 
-
+import HelperTickets from '../src/components/helper_tickets'
+import HelperAssigned from '../src/components/helper_assigned'
+import HelperResolved from '../src/components/helper_resolved'
+import TicketForm from '../src/components/TicketForm'
+import PrivateRoute from './utils/PrivateRoute'
 
 function App() {
   return (
@@ -20,6 +24,10 @@ function App() {
             <Route path="/registration">
                 <Registration />
             </Route>
+            {/* HELPER PAGES */}
+            <PrivateRoute path="/helper-tickets/:id" component={HelperTickets} /> 
+            <PrivateRoute path="/assigned-tickets/:id" component={HelperAssigned} /> 
+            <PrivateRoute path="/resolved-tickets/:id" component={HelperResolved} /> 
             <Route path="/">
               <Home />
             </Route>
