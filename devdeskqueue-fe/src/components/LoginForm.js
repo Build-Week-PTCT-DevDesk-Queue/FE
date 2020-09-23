@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import * as yup from "yup";
 import axios from 'axios';
+import axiosWithAuth from '../utils/AxiosWithAuth'
+//REDUX
+import { connect } from 'react-redux';
+import { getTickets } from './actions/ticketActions';
 
 const loginSchema = yup.object().shape({
     username: yup.string().required("Must fill in username"),
@@ -41,10 +45,11 @@ const Login = () => {
     const submitForm = (e) => {
         e.preventDefault();
 
-        axios.post( 'https://devdesk2-be.herokuapp.com/api/auth/login', loginState )
+        axiosWithAuth().post('/api/auth/login', loginState )
         .then( (res) => {
-           console.log(res)
-        
+           console.log("LOGIN SUCCESS",res)
+           //CALL INITIAL GET() FROM ACTIONS
+           getTickets();
            // ROUTING TO CORRECT COMPONENTS
            if(res.data.role === 'helper'){
              history.push(`/helper-tickets/${res.data.id}`)
@@ -57,8 +62,6 @@ const Login = () => {
            console.log(err)
         })
 
-
-        console.log("Form submited!!");
         setLoginState({
             username: "",
             password: ""
@@ -91,4 +94,9 @@ return(
 )
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+   return {state};
+ }
+
+//export default Login;
+export default connect( mapStateToProps, { getTickets } )(Login);

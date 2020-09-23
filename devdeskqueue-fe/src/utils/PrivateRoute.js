@@ -3,7 +3,7 @@ import { Route, Redirect } from "react-router-dom";
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
 
-   console.log( rest.computedMatch.params.id )
+   //console.log( rest.computedMatch.params.id )
 
    const checkAuth = () => {
       if( rest.computedMatch.params.id !== null){

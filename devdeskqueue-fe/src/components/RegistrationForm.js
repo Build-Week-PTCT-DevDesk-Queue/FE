@@ -3,6 +3,10 @@ import { Link, useHistory } from "react-router-dom";
 import * as yup from "yup";
 import axios from 'axios';
 
+import axiosWithAuth from '../utils/AxiosWithAuth'
+//REDUX
+import { connect } from 'react-redux';
+import { getTickets } from './actions/ticketActions';
 
 const regFormSchema = yup.object().shape({
     username: yup.string().required("Must choose a username!")
@@ -51,7 +55,7 @@ const Registration = () => {
     const submitForm = (e) => {
         e.preventDefault();
 
-        axios.post( 'https://devdesk2-be.herokuapp.com/api/auth/register', regState)
+        axiosWithAuth().post('/api/auth/register', regState)
         .then( (res) => {
            console.log(res)
 
@@ -116,4 +120,9 @@ const Registration = () => {
     )
 }
 
-export default Registration;
+const mapStateToProps = (state) => {
+   return {state};
+ }
+
+//export default Registration;
+export default connect( mapStateToProps , { getTickets } )(Registration);
