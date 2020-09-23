@@ -47,8 +47,8 @@ export const GET_DATA_FAIL = "GET_DATA_FAIL";
 
 export const getData = () => dispatch => {
     dispatch({ type: GET_DATA_START });
-    axiosWithAuth()
-        .get('/tickets')
+    axios
+        .get('https://devdesk2-be.herokuapp.com/api/tickets')
         .then(res => {
             dispatch({ type: GET_DATA_SUCCESS, payload: res.data });
         })

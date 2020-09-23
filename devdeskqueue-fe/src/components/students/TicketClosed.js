@@ -1,7 +1,7 @@
-// import React, { useEffect } from "react";
-// import { connect } from "react-redux";
-// import { useHistory, useParams } from 'react-router-dom';
-// import Student from "../students/Student"
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
+import { useHistory, useParams } from 'react-router-dom';
+import Student from "../students/Student"
 
 
 

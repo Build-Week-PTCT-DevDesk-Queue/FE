@@ -10,7 +10,7 @@ const ticketFormSchema = yup.object().shape({
     category: yup.string().required("Must choose a category"),
 });
 
-const TicketForm = () => {
+const TicketForm = (props) => {
 const [newTicketState, setNewTicketState] = useState({
     title: '',
     description: '',
@@ -45,12 +45,17 @@ const inputChange = (e) => {
 const submitForm = (e) => {
     e.preventDefault();
     console.log("Form submited!!");
+    success();
     setNewTicketState({
         title: '',
         description: '',
         tried: '',
         category: '',
     })
+}
+
+const success = () => {
+    props.history.push('/tickets')
 }
 
 const [buttonDisabled, setButtonDisabled] = useState(true);

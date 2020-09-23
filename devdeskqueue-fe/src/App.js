@@ -27,7 +27,10 @@ function App() {
             <Route path="/registration">
                 <Registration />
             </Route>
-           {/* <PrivateRoute path ="/ticket-form" component={TicketForm} /> */}
+            {/* <Route path="/ticketform">
+              <TicketForm/>
+            </Route> */}
+           <PrivateRoute path ="/form" component={TicketForm} />
             <PrivateRoute path = "/tickets" component={Student} />
             {/* HELPER PAGES */}
             <PrivateRoute path="/helper-tickets/:id" component={HelperTickets} /> 
