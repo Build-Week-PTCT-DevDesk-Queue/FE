@@ -42,15 +42,16 @@ const Login = () => {
             [e.target.name]: e.target.value
         });
     }
+    
     const submitForm = (e) => {
         e.preventDefault();
 
         axiosWithAuth().post('/api/auth/login', loginState )
         .then( (res) => {
            console.log("LOGIN SUCCESS",res)
-           //CALL INITIAL GET() FROM ACTIONS
+           //CALL INITIAL GET() FROM ACTIONS---
            getTickets();
-           // ROUTING TO CORRECT COMPONENTS
+           // ROUTING TO CORRECT COMPONENTS---
            if(res.data.role === 'helper'){
              history.push(`/helper-tickets/${res.data.id}`)
            }

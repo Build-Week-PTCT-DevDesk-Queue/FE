@@ -57,9 +57,10 @@ const Registration = () => {
 
         axiosWithAuth().post('/api/auth/register', regState)
         .then( (res) => {
-           console.log(res)
-
-          // ROUTING TO CORRECT COMPONENTS
+          console.log("REGISTER SUCCESS",res)
+          //CALL INITIAL GET() FROM ACTIONS---
+          getTickets();
+          // ROUTING TO CORRECT COMPONENTS---
           if(res.data.role === 'helper'){
            history.push(`/helper-tickets/${res.data.id}`)
          }
