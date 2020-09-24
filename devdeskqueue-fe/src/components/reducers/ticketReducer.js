@@ -139,6 +139,18 @@ export const ticketReducer = ( state = initialState, action) => {
             }
          })
 
+         case "ADD_TICKET_STAR":
+         
+            return state.map( (item) => {
+   
+               if(item.id === action.payload){
+                   // ADD IF() STATEMENT - CHECK IF ALREDY ASSGINED
+                   return{...item, status: 0 ,helper_id: null}
+               }else{
+                  return item;
+               }
+            })
+
       // case "DELETE_TICKET":
          
       //    state.forEach( (item) => {

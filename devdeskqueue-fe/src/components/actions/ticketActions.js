@@ -4,6 +4,7 @@ import axiosWithAuth from '../../utils/AxiosWithAuth'
 // GETs all tickets with helper_id null && status 0 =========================//
 export const getTickets = () => {
    console.log("get tickets is being called")
+   
    return dispatch => {
        axiosWithAuth().get("/api/tickets")
          .then( (response) => {
@@ -14,11 +15,25 @@ export const getTickets = () => {
      };
 }
 
-
-export const createTicket = () => {
+// export const createTicket = () => {
 
   
-}
+// }
+
+// export const create = newTicket => dispatch => {
+//    dispatch({ type: ADD_TICKET_START });
+//    axiosWithAuth()
+//        .post('/tickets/create', newTicket)
+//        .then(res => {
+//            dispatch({
+//                type: ADD_TICKET_SUCCESS,
+//                payload: res.data
+//            });
+//        })
+//        .catch(err => {
+//            dispatch({ type: ADD_TICKET_FAIL, payload: err.response });
+//        });
+// };
 
 export const assignTicket = (ticketId, helperId) => {
    return dispatch => {
