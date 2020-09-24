@@ -3,13 +3,12 @@ import axiosWithAuth from '../../utils/AxiosWithAuth'
 
 // GETs all tickets with helper_id null && status 0 =========================//
 export const getTickets = () => {
-   console.log("get tickets is being called")
-   
+   //console.log("get tickets is being called")
    return dispatch => {
        axiosWithAuth().get("/api/tickets")
          .then( (response) => {
             console.log("GET IN ACTIONS", response )
-            //dispatch({ type: "GET_TICKETS", payload: response.data });
+            dispatch({ type: "GET_TICKETS", payload: response.data });
          })
          .catch(err => console.log("ERROR:", err));
      };
@@ -76,9 +75,3 @@ export const reassignTicket = (ticketId) => {
       dispatch( { type: "REASSIGN_TICKET", payload: ticketId } )
    }
 }
-
-// export const deleteTicket = (id) => {
-//    return dispatch => {
-//       dispatch( { type: "DELETE_TICKET", payload: id } )
-//    }
-// }
