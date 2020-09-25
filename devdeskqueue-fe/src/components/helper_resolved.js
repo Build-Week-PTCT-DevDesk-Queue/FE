@@ -3,7 +3,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import styled from 'styled-components';
 //REDUX
 import { connect } from 'react-redux';
-import { reassignTicket } from './actions/ticketActions';
+import { reassignTicket } from './actions/studentAction';
 
 function HelperResolved(props){
 

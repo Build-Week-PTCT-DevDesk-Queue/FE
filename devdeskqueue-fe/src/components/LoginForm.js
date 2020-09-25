@@ -5,7 +5,8 @@ import axios from 'axios';
 import axiosWithAuth from '../utils/AxiosWithAuth'
 //REDUX
 import { connect } from 'react-redux';
-import { getTickets } from './actions/ticketActions';
+// import { getTickets } from './actions/ticketActions';
+import { getData } from "./actions/studentAction";
 
 const loginSchema = yup.object().shape({
     username: yup.string().required("Must fill in username"),
@@ -50,7 +51,7 @@ const Login = () => {
         .then( (res) => {
            console.log("LOGIN SUCCESS",res)
            //CALL INITIAL GET() FROM ACTIONS---
-           getTickets();
+           getData();
            // ROUTING TO CORRECT COMPONENTS---
            if(res.data.role === 'helper'){
              history.push(`/helper-tickets/${res.data.id}`)
@@ -100,4 +101,4 @@ const mapStateToProps = (state) => {
  }
 
 //export default Login;
-export default connect( mapStateToProps, { getTickets } )(Login);
+export default connect( mapStateToProps, { getData } )(Login);

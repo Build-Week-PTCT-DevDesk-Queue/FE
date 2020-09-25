@@ -6,7 +6,8 @@ import axios from 'axios';
 import axiosWithAuth from '../utils/AxiosWithAuth'
 //REDUX
 import { connect } from 'react-redux';
-import { getTickets } from './actions/ticketActions';
+// import { getTickets } from './actions/ticketActions';
+import { getData } from "./actions/studentAction";
 
 const regFormSchema = yup.object().shape({
     username: yup.string().required("Must choose a username!")
@@ -59,7 +60,7 @@ const Registration = () => {
         .then( (res) => {
           console.log("REGISTER SUCCESS",res)
           //CALL INITIAL GET() FROM ACTIONS---
-          getTickets();
+          getData();
           // ROUTING TO CORRECT COMPONENTS---
           if(res.data.role === 'helper'){
            history.push(`/helper-tickets/${res.data.id}`)
@@ -126,4 +127,4 @@ const mapStateToProps = (state) => {
  }
 
 //export default Registration;
-export default connect( mapStateToProps , { getTickets } )(Registration);
+export default connect( mapStateToProps , { getData } )(Registration);
