@@ -8,6 +8,8 @@ import { connect } from 'react-redux';
 // import { getTickets } from './actions/ticketActions';
 import { getData } from "./actions/studentAction";
 
+// import { getTickets } from './actions/ticketActions';
+
 const loginSchema = yup.object().shape({
     username: yup.string().required("Must fill in username"),
     password: yup.string().required("Must fill in password")
@@ -43,6 +45,7 @@ const Login = () => {
             [e.target.name]: e.target.value
         });
     }
+    
     
     const submitForm = (e) => {
         e.preventDefault();

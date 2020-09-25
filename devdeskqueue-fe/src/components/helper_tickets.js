@@ -11,14 +11,11 @@ function HelperTickets(props){
 
    //console.log(props.state)
 
-   useEffect( ()=> {
-
-      console.log("use effect is called")
-      
-      axiosWithAuth().get('/api/tickets')
-      .then( (res) => { console.log("GET() REQUEST", res)} )
-      .catch( (err) => console.log(err))
-   },[])
+   // useEffect( ()=> {
+   //    axiosWithAuth().get('/api/tickets')
+   //    .then( (res) => console.log(res))
+   //    .catch( (err) => console.log(err))
+   // },[])
 
    const history  = useHistory();
    const { id }   = useParams();

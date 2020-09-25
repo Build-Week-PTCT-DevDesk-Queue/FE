@@ -142,7 +142,7 @@ export const ticketReducer = ( state = initialState, action) => {
             }
          })
 
-         case "ADD_TICKET_STAR":
+         case "ADD_TICKET_START":
          
             return state.map( (item) => {
    
