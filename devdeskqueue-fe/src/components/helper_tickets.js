@@ -9,11 +9,14 @@ import axiosWithAuth from '../utils/AxiosWithAuth'
 
 function HelperTickets(props){
 
-   console.log(props)
+   //console.log(props.state)
 
    useEffect( ()=> {
+
+      console.log("use effect is called")
+      
       axiosWithAuth().get('/api/tickets')
-      .then( (res) => console.log(res))
+      .then( (res) => { console.log("GET() REQUEST", res)} )
       .catch( (err) => console.log(err))
    },[])
 
