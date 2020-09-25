@@ -16,7 +16,7 @@ export const getTickets = () => dispatch => {
      //};
 }
 
-// HELPER BRANCH - ASSIGN====================================================================
+// HELPER BRANCH - ASSIGN========================================================
 export const assignTicket = (ticketId, helperId) => {
    return dispatch => {
 

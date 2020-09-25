@@ -92,7 +92,7 @@
 //      }
 //  ] ;
 
-const initialState = [];
+const initialState = []; 
 
 
 export const ticketReducer = ( state = initialState, action) => {
@@ -107,6 +107,7 @@ export const ticketReducer = ( state = initialState, action) => {
       // case "CREATE_TICKET":
       //    break;
 
+      // HELPER BRANCH =========================================
       case "ASSIGN_TICKET":
 
          //console.log( "PAYLOAD", action.payload.ticketId )
@@ -119,6 +120,7 @@ export const ticketReducer = ( state = initialState, action) => {
             }
          })
 
+      // HELPER BRANCH =========================================
       case "RESOLVE_TICKET":
          return state.map( (item) => {
 
@@ -130,6 +132,7 @@ export const ticketReducer = ( state = initialState, action) => {
             }
          })
          
+      // HELPER BRANCH =========================================   
       case "REASSIGN_TICKET":
          
          return state.map( (item) => {
@@ -142,7 +145,7 @@ export const ticketReducer = ( state = initialState, action) => {
             }
          })
 
-         case "ADD_TICKET_STAR":
+         case "ADD_TICKET_START":
          
             return state.map( (item) => {
    
