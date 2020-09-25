@@ -19,6 +19,7 @@ import {
     EDIT_TICKET_START,
     EDIT_TICKET_SUCCESS,
     EDIT_TICKET_FAIL
+    
 
 } from "../actions/studentAction";
 
@@ -165,6 +166,45 @@ const intialState = {
                 isRegistering: false,
                 error: action.payload
             }
+
+            //helper cases
+
+            
+            case "ASSIGN_TICKET":
+
+                //console.log( "PAYLOAD", action.payload.ticketId )
+                return state.map( (item) => {
+       
+                   if(item.id === action.payload.ticketId){
+                       return{...item, helper_id: action.payload.helperId }
+                   }else{
+                      return item;
+                   }
+                })
+       
+             case "RESOLVE_TICKET":
+                return state.map( (item) => {
+       
+                   if(item.id === action.payload){
+                       // ADD IF() STATEMENT - CHECK IF ALREDY ASSGINED
+                       return{...item, status: 1 }
+                   }else{
+                      return item;
+                   }
+                })
+                
+             case "REASSIGN_TICKET":
+                
+                return state.map( (item) => {
+       
+                   if(item.id === action.payload){
+                       // ADD IF() STATEMENT - CHECK IF ALREDY ASSGINED
+                       return{...item, status: 0 ,helper_id: null}
+                   }else{
+                      return item;
+                   }
+                })
+
         default:
             return state;
     }

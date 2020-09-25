@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import * as yup from "yup";
+import { addTicket } from "./actions/studentAction"
+import { connect } from "react-redux";
+
+
 
 
 const ticketFormSchema = yup.object().shape({
@@ -45,6 +49,7 @@ const inputChange = (e) => {
 const submitForm = (e) => {
     e.preventDefault();
     console.log("Form submited!!");
+    props.addTicket(newTicketState)
     success();
     setNewTicketState({
         title: '',
@@ -100,4 +105,6 @@ return (
 )
 }
 
-export default TicketForm;
+
+
+export default connect(null, {addTicket})(TicketForm);

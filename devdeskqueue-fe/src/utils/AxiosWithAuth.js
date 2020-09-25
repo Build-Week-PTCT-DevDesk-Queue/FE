@@ -7,4 +7,4 @@ const axiosWithAuth = () => {
         withCredentials: true
   });
 };
-export default axiosWithAuth
+export default axiosWithAuth;
