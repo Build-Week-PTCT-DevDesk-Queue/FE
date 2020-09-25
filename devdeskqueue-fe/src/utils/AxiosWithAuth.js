@@ -4,7 +4,7 @@ const axiosWithAuth = () => {
    
   return axios.create({
         baseURL: 'https://devdesk2-be.herokuapp.com/',
-        // withCredentials: true
+        withCredentials: true
   });
 };
-export default axiosWithAuth
+export default axiosWithAuth;
