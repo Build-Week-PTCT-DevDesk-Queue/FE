@@ -7,7 +7,7 @@ import { assignTicket } from './actions/studentAction';
 
 function HelperTickets(props){
 
-   console.log("TICKETS IN HELPER: ", props ? props : "Loading")
+   //console.log("TICKETS IN HELPER: ", props.state.tickets )
 
    const history  = useHistory();
    const { id }   = useParams();

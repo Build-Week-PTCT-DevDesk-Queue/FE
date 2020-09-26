@@ -125,14 +125,14 @@ export const DELETE_TICKET_FAIL = 'DELETE_TICKET_FAIL';
 export const assignTicket = (ticketId, helperId) => {
     return dispatch => {
  
-       // axiosWithAuth().put(`/api/tickets/${ticketId}/helper/${helperId}`)
-       // .then( (response) => {
-             //console.log(response)
-       //    //dispatch({ type: "GET_TICKETS_BY_HELPER_ID", payload: response.SHAPEOFTHEDATA });
-       // })
-       // .catch(err => console.log("ERROR:", err));
+       axiosWithAuth().put(`/api/tickets/${ticketId}/helper/${helperId}`)
+       .then( (response) => {
+             console.log("RESPONSE FROM ASSIGN: " , response)
+          //dispatch({ type: "GET_TICKETS_BY_HELPER_ID", payload: response.SHAPEOFTHEDATA });
+       })
+       .catch(err => console.log("ERROR:", err));
  
-       dispatch( { type: "ASSIGN_TICKET", payload: { ticketId : ticketId , helperId : helperId } } )
+       //dispatch( { type: "ASSIGN_TICKET", payload: { ticketId : ticketId , helperId : helperId } } )
     }
  }
  export const resolveTicket = (ticketId) => {
