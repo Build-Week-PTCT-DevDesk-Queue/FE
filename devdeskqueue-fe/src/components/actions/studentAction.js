@@ -122,8 +122,8 @@ export const DELETE_TICKET_FAIL = 'DELETE_TICKET_FAIL';
 
 // action for helper for Mike 
 
-export const assignTicket = (ticketId, helperId) => {
-    return dispatch => {
+export const assignTicket = (ticketId, helperId) => dispatch => {
+    //return dispatch => {
  
        axiosWithAuth().put(`/api/tickets/${ticketId}/helper/${helperId}`)
        .then( (response) => {
@@ -133,7 +133,7 @@ export const assignTicket = (ticketId, helperId) => {
        .catch(err => console.log("ERROR:", err));
  
        //dispatch( { type: "ASSIGN_TICKET", payload: { ticketId : ticketId , helperId : helperId } } )
-    }
+    //}
  }
  export const resolveTicket = (ticketId) => {
     return dispatch => {
