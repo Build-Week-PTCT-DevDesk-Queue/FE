@@ -29,7 +29,7 @@ function HelperResolved(props){
         <TicketList>
                { props.state.map( item => {
 
-               if( item.helper_id === id && item.status === 1 ){
+               if( item.helper_id === id && item.status === true ){
 
                   return <Ticket key={item.id}>
                               <h3>{item.title}</h3>

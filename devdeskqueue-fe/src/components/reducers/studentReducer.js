@@ -187,7 +187,7 @@ const intialState = {
        
                    if(item.id === action.payload){
                        // ADD IF() STATEMENT - CHECK IF ALREDY ASSGINED
-                       return{...item, status: 1 }
+                       return{...item, status: true }
                    }else{
                       return item;
                    }
@@ -199,7 +199,7 @@ const intialState = {
        
                    if(item.id === action.payload){
                        // ADD IF() STATEMENT - CHECK IF ALREDY ASSGINED
-                       return{...item, status: 0 ,helper_id: null}
+                       return{...item, status: false ,helper_id: null}
                    }else{
                       return item;
                    }
