@@ -11,7 +11,7 @@ import { getData } from "../actions/studentAction"
 const Student = props => {
 
         // console.log(props)
-        //props.getData()
+        props.getData()
    
     const formCard = () =>{
         props.history.push('/form')
