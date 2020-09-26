@@ -9,17 +9,7 @@ import axiosWithAuth from '../utils/AxiosWithAuth'
 
 function HelperTickets(props){
 
-   //console.log(props.state)
-
-   // useEffect( ()=> {
-
-   //    console.log("use effect is called")
-
-   //    axiosWithAuth().get('/api/tickets')
-   //    .then( (res) => { console.log("GET() REQUEST", res)} )
-   //    .catch( (err) => console.log(err))
-   // },[])
-
+  
    const history  = useHistory();
    const { id }   = useParams();
 
@@ -42,7 +32,7 @@ function HelperTickets(props){
         <button onClick={routeToMyTickets}>My Queue</button>
         <button onClick={routeToResolved}>All Resolved Tickets</button>
         <TicketList>
-           { props.state.map( item => {
+           { props.state.tickets.map( item => {
                if( item.helper_id === null && item.status === 0 ){
                      return <Ticket key={item.id}>
                                  <h3>{item.title}</h3>
