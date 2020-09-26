@@ -4,8 +4,6 @@ import styled from 'styled-components';
 //REDUX
 import { connect } from 'react-redux';
 import { assignTicket } from './actions/studentAction';
-import axios from 'axios'
-import axiosWithAuth from '../utils/AxiosWithAuth'
 
 function HelperTickets(props){
 

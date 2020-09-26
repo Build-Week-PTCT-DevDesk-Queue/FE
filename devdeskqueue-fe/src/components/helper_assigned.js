@@ -27,7 +27,7 @@ function HelperAssigned(props){
         <button onClick={routeToMyTickets}>My Queue</button>
         <button onClick={routeToResolved}>All Resolved Tickets</button>
         <TicketList>
-           { props.state.map( item => {
+           { props.state.tickets.map( item => {
 
               if( item.helper_id === id && item.status === false ){
 
