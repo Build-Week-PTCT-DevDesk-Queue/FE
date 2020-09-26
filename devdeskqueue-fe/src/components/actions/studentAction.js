@@ -51,7 +51,7 @@ export const getData = () => dispatch => {
     axiosWithAuth()
         .get('api/tickets')
         .then(res => {
-           console.log(res.data)
+            console.log(res.data)
             dispatch({ type: GET_DATA_SUCCESS, payload: res.data });
         })
         .catch(err => {
