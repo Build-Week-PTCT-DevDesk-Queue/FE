@@ -56,7 +56,8 @@ const intialState = {
             };
         case GET_DATA_SUCCESS:
             return {
-                ...state,
+                //...state,
+                ...action.payload,
                 fetchingData: false,
                 tickets: action.payload
             };

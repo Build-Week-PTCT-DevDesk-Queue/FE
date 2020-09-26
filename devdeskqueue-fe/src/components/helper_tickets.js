@@ -3,10 +3,10 @@ import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 //REDUX
 import { connect } from 'react-redux';
-import { assignTicket } from './actions/studentAction';
+import { assignTicket, getData } from './actions/studentAction';
 
 function HelperTickets(props){
-
+   
    //console.log("TICKETS IN HELPER: ", props.state.tickets )
 
    const history  = useHistory();
