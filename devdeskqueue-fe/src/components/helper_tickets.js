@@ -6,8 +6,9 @@ import { connect } from 'react-redux';
 import { assignTicket, getData } from './actions/studentAction';
 
 function HelperTickets(props){
-   
+
    //console.log("TICKETS IN HELPER: ", props.state.tickets )
+   getData();
 
    const history  = useHistory();
    const { id }   = useParams();

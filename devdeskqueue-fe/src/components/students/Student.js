@@ -12,6 +12,7 @@ const Student = props => {
 
         // console.log(props)
         props.getData()
+
    
     const formCard = () =>{
         props.history.push('/form')
