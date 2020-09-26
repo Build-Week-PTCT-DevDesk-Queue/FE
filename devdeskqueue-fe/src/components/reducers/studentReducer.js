@@ -26,6 +26,7 @@ import {
 
 const intialState = {
     tickets: [],
+    assigned_tickets: [], // TEST - ADDED FOR API FUNCTIONALITY ***START HERE****
     user: {
         id: "",
         username: "",
@@ -181,6 +182,7 @@ const intialState = {
                       return item;
                    }
                 })
+                
        
              case "RESOLVE_TICKET":
                 return state.tickets.map( (item) => {

@@ -128,12 +128,12 @@ export const assignTicket = (ticketId, helperId) => dispatch => {
        axiosWithAuth().put(`/api/tickets/${ticketId}/helper/${helperId}`)
        .then( (response) => {
           console.log("RESPONSE FROM ASSIGN: " , response)
-          dispatch({ type: "ASSIGN_TICKET", 
-                     payload: 
-                        { ticketId : ticketId, 
-                          helperId : response.data.helper_id
-                        } 
-                  });
+         //  dispatch({ type: "ASSIGN_TICKET", 
+         //             payload: 
+         //                { ticketId : ticketId, 
+         //                  helperId : response.data.helper_id
+         //                } 
+         //          });
        })
        .catch(err => console.log("ERROR:", err));
 
@@ -141,6 +141,29 @@ export const assignTicket = (ticketId, helperId) => dispatch => {
        //dispatch( { type: "ASSIGN_TICKET", payload: { ticketId : ticketId , helperId : helperId } } )
     //}
  }
+
+ export const getAssigned = (helperId) => dispatch => {
+   //return dispatch => {
+
+      axiosWithAuth().get(`/api/tickets/helper_id/${helperId}`)
+      .then( (response) => {
+         console.log("RESPONSE FROM ASSIGN: " , response)
+        //  dispatch({ type: "GET_ASSIGNED", 
+        //             payload: 
+        //                { ticketId : ticketId, 
+        //                  helperId : response.data.helper_id
+        //                } 
+        //          });
+      })
+      .catch(err => console.log("ERROR:", err));
+
+      // ORIGINAL CODE WITH LOCAL DATA--------------------------------------------------------------
+      //dispatch( { type: "ASSIGN_TICKET", payload: { ticketId : ticketId , helperId : helperId } } )
+   //}
+}
+
+
+
  export const resolveTicket = (ticketId) => dispatch => {
     //return dispatch => {
  

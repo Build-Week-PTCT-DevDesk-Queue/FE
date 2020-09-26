@@ -3,7 +3,7 @@ import { useHistory, useParams } from 'react-router-dom'
 import styled from 'styled-components';
 //REDUX
 import { connect } from 'react-redux';
-import { reassignTicket, resolveTicket } from './actions/studentAction';
+import { reassignTicket, resolveTicket, getAssigned } from './actions/studentAction';
 
 function HelperAssigned(props){
 
@@ -53,7 +53,7 @@ const mapStateToProps = (state) => {
    return {state};
  }
 
-export default connect( mapStateToProps, { reassignTicket, resolveTicket } )(HelperAssigned);
+export default connect( mapStateToProps, { reassignTicket, resolveTicket, getAssigned } )(HelperAssigned);
 
 const TicketContainer = styled.div`
    button{
