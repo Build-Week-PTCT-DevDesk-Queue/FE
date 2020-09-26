@@ -51,7 +51,6 @@ export const getData = () => dispatch => {
     axiosWithAuth()
         .get('api/tickets')
         .then(res => {
-            console.log(res.data)
             dispatch({ type: GET_DATA_SUCCESS, payload: res.data });
         })
         .catch(err => {
@@ -128,16 +127,22 @@ export const assignTicket = (ticketId, helperId) => dispatch => {
  
        axiosWithAuth().put(`/api/tickets/${ticketId}/helper/${helperId}`)
        .then( (response) => {
-             console.log("RESPONSE FROM ASSIGN: " , response)
-          //dispatch({ type: "GET_TICKETS_BY_HELPER_ID", payload: response.SHAPEOFTHEDATA });
+          console.log("RESPONSE FROM ASSIGN: " , response)
+          dispatch({ type: "ASSIGN_TICKET", 
+                     payload: 
+                        { ticketId : ticketId, 
+                          helperId : response.data.helper_id
+                        } 
+                  });
        })
        .catch(err => console.log("ERROR:", err));
- 
+
+       // ORIGINAL CODE WITH LOCAL DATA--------------------------------------------------------------
        //dispatch( { type: "ASSIGN_TICKET", payload: { ticketId : ticketId , helperId : helperId } } )
     //}
  }
- export const resolveTicket = (ticketId) => {
-    return dispatch => {
+ export const resolveTicket = (ticketId) => dispatch => {
+    //return dispatch => {
  
        // axiosWithAuth().put("/api/tickets/${ticketId}/status", { "status": 1 } )
        // .then( (response) => {
@@ -147,11 +152,11 @@ export const assignTicket = (ticketId, helperId) => dispatch => {
        // .catch(err => console.log("ERROR:", err));
  
        dispatch( { type: "RESOLVE_TICKET", payload: ticketId } )
-    }
+    //}
  }
  
- export const reassignTicket = (ticketId) => {
-    return dispatch => {
+ export const reassignTicket = (ticketId) => dispatch => {
+    //return dispatch => {
     
        // axiosWithAuth().put(`/api/tickets/${ticketId}/helper/${0}`)
        // .then( (response) => {
@@ -161,7 +166,7 @@ export const assignTicket = (ticketId, helperId) => dispatch => {
        // .catch(err => console.log("ERROR:", err));
  
        dispatch( { type: "REASSIGN_TICKET", payload: ticketId } )
-    }
+    //}
  }
 
 
