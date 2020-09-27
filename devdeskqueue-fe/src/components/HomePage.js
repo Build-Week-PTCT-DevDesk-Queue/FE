@@ -3,8 +3,7 @@ import { useHistory } from "react-router-dom";
 import image from "../safe.jpg";
 import styled, { keyframes } from "styled-components";
 import { bounce } from "react-animations";
-// import dummyDataAdela from "../dummyDataAdela";
-// import TicketCard from "./TicketCard";
+
 
 const bounceAnimation = keyframes`${bounce}`;
 const BouncyButton = styled.button`

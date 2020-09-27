@@ -27,9 +27,9 @@ function HelperTickets(props){
    return (
       <TicketContainer> 
         <h1>All Open Tickets</h1>
-        <button onClick={routeToAllTickets}>All Open Tickets</button>
-        <button onClick={routeToMyTickets}>My Queue</button>
-        <button onClick={routeToResolved}>My Resolved Tickets</button>
+        <button className="all-tickets" onClick={routeToAllTickets}>All Open Tickets</button>
+        <button className="my-queue" onClick={routeToMyTickets}>My Queue</button>
+        <button className="my-resolved" onClick={routeToResolved}>My Resolved Tickets</button>
         <TicketList>
            { props.state.tickets.map( item => {
                if( item.helper_id === null /* && item.status === false */ ){
@@ -56,14 +56,17 @@ const mapStateToProps = (state) => {
 export default connect( mapStateToProps, { assignTicket, getData } )(HelperTickets);
 
 const TicketContainer = styled.div`
+   font-size: 0.8rem;
+
+   .all-tickets{
+      box-shadow: 0 2px 4px gray;
+   }
+
    button{
       margin: 1em;
       padding: .5em .75em;
       cursor: pointer;
    }
-  display: inline-block;
-   font-size: 0.8rem;
-   text-align: left;
 `;
 
 const TicketList = styled.div`
@@ -79,13 +82,25 @@ const Ticket = styled.div`
    margin: 1em 0;
    background-color: #fff;
   border: 0;
-  box-shadow: 0 -1px 0 #cf7171, 0 0 2px rgba(199, 78, 78, 0.12),
+  box-shadow: 0 -2px 0 #cf7171, 0 0 2px rgba(199, 78, 78, 0.12),
     0 2px 4px rgba(194, 72, 72, 0.24);
   padding: 1rem;
   position: relative;
   margin: 1rem auto;
-  width: 80%;
-   button{
-cursor: pointer;
+  display: inline-block;
+   font-size: 0.8rem;
+   text-align: left;
+  button{
+     cursor: pointer;
+   }
+
+   @media screen and (max-width: 1000px){
+      width: 27%;
+   }
+   @media screen and (max-width: 850px){
+      width: 40%;
+   }
+   @media screen and (max-width: 600px){
+      width: 80%;
    }
 `;
