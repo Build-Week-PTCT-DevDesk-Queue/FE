@@ -29,7 +29,7 @@ function HelperAssigned(props){
         <h1>My Open Tickets</h1>
         <button onClick={routeToAllTickets}>All Open Tickets</button>
         <button onClick={routeToMyTickets}>My Queue</button>
-        <button onClick={routeToResolved}>All Resolved Tickets</button>
+        <button onClick={routeToResolved}>My Resolved Tickets</button>
         <TicketList>
            { props.state.assigned_tickets.map( item => {
 
