@@ -10,7 +10,7 @@ function HelperTickets(props){
    console.log("HELPER TICKETS props",props.state.tickets)
    //console.log("TICKETS IN HELPER: ", props.state.tickets )
    useEffect( ()=> {
-      console.log("useEffet is called")
+      console.log("useEffect is called")
       props.getData();
    },[])
   

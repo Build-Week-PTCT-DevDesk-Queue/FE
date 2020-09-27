@@ -173,10 +173,15 @@ const intialState = {
             
             case "ASSIGN_TICKET":
 
+               const assignedToHelper = state.tickets.filter( (item)=> { 
+                  //console.log( "ITEM ID",typeof(item.id))
+                  //console.log( "HELPER ID ",typeof(action.payload.helper_id))
+                  return item.id !== action.payload.ticketId })
+
                return {
                   ...state,
-                  assigned_tickets: [...state.assigned_tickets, action.payload],
-                  tickets: state.tickets.filter( (item)=> { return item.id !== action.payload.helper_id})
+                  assigned_tickets: [...state.assigned_tickets, action.payload.response],
+                  tickets: assignedToHelper //state.tickets.filter( (item)=> { return item.id !== action.payload.helper_id})
               };
                // LOCAL DATA---------------------------
                //  return state.tickets.map( (item) => {
@@ -200,28 +205,23 @@ const intialState = {
                 const resolvedTickets = state.assigned_tickets.map( (item) => {
             
                    if(item.id === action.payload){
-                       // ADD IF() STATEMENT - CHECK IF ALREDY ASSGINED
                        return{...item, status: true }
                    }else{
                       return item;
                    }
                 })
+
                return {
                   ...state,
-                  assigned_tickets: resolvedTickets //.filter( (item)=> { return item.id !== action.payload.toString()})
+                  assigned_tickets: resolvedTickets 
               };
                 
              case "REASSIGN_TICKET":
                 
-               //  return state.assigned_tickets.map( (item) => {
-       
-               //     if(item.id !== action.payload){
-               //        return item;
-               //     }
-               //  })
+                const reassignedTickets = state.assigned_tickets.filter( (item)=> { return item.id !== action.payload })
                 return {
                   ...state,
-                  assigned_tickets: state.assigned_tickets.filter( (item)=> { return item.id !== action.payload.toString()})
+                  assigned_tickets: reassignedTickets
               };
 
 

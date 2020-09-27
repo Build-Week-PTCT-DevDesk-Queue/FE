@@ -128,7 +128,7 @@ export const assignTicket = (ticketId, helperId) => dispatch => {
        axiosWithAuth().put(`/api/tickets/${ticketId}/helper/${helperId}`)
        .then( (response) => {
           console.log("RESPONSE FROM ASSIGN: " , response.data) // RESPONSE IS THE OBJECT
-          dispatch({ type: "ASSIGN_TICKET", payload: response.data });
+          dispatch({ type: "ASSIGN_TICKET", payload: { response : response.data, ticketId : ticketId } } );
        })
        .catch(err => console.log("ERROR:", err));
 
@@ -181,7 +181,7 @@ export const assignTicket = (ticketId, helperId) => dispatch => {
 
 
        // ORIGINAL CODE WITH LOCAL DATA--------------------------------------------------------------
-       //dispatch( { type: "REASSIGN_TICKET", payload: ticketId } )
+       dispatch( { type: "REASSIGN_TICKET", payload: ticketId } )
     //}
  }
 
