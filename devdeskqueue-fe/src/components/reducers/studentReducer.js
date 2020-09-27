@@ -26,7 +26,7 @@ import {
 
 const intialState = {
     tickets: [],
-    assigned_tickets: [], // TEST - ADDED FOR API FUNCTIONALITY ***START HERE****
+    assigned_tickets: [], // Holds temporary state on helper branch
     user: {
         id: "",
         username: "",
@@ -168,31 +168,19 @@ const intialState = {
                 error: action.payload
             }
 
-            //helper cases
+            // HELPER BRANCH FUNCTIONALITY----------------------------------
 
             
             case "ASSIGN_TICKET":
 
-               const assignedToHelper = state.tickets.filter( (item)=> { 
-                  //console.log( "ITEM ID",typeof(item.id))
-                  //console.log( "HELPER ID ",typeof(action.payload.helper_id))
-                  return item.id !== action.payload.ticketId })
+               const assignedToHelper = state.tickets.filter( (item)=> { return item.id !== action.payload.ticketId })
 
                return {
                   ...state,
                   assigned_tickets: [...state.assigned_tickets, action.payload.response],
-                  tickets: assignedToHelper //state.tickets.filter( (item)=> { return item.id !== action.payload.helper_id})
+                  tickets: assignedToHelper 
               };
-               // LOCAL DATA---------------------------
-               //  return state.tickets.map( (item) => {
-       
-               //     if(item.id === action.payload.ticketId){
-               //         return{...item, helper_id: action.payload.helperId }
-               //     }else{
-               //        return item;
-               //     }
-               //tickets: state.tickets.filter( (item)=> { return item.id !== action.payload.helper_id.toString()})
-               //  })
+              
              case "GET_ASSIGNED":
                 
                return {
@@ -224,11 +212,8 @@ const intialState = {
                   assigned_tickets: reassignedTickets
               };
 
-
-
-
-        default:
-            return state;
+              default:
+                  return state;
     }
 };
 

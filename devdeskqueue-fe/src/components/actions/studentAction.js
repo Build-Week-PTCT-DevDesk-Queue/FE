@@ -120,83 +120,58 @@ export const DELETE_TICKET_FAIL = 'DELETE_TICKET_FAIL';
 
 
 
-// action for helper for Mike 
+// HELPER BRANCH FUNCTIONALITY----------------------------------
+
 
 export const assignTicket = (ticketId, helperId) => dispatch => {
-    //return dispatch => {
-       console.log("ASSIGN TICKET")
+    
        axiosWithAuth().put(`/api/tickets/${ticketId}/helper/${helperId}`)
-       .then( (response) => {
-          console.log("RESPONSE FROM ASSIGN: " , response.data) // RESPONSE IS THE OBJECT
-          dispatch({ type: "ASSIGN_TICKET", payload: { response : response.data, ticketId : ticketId } } );
-       })
-       .catch(err => console.log("ERROR:", err));
+         .then( (response) => {
+            // RESPONSE IS A TICKET OBJECT
+            dispatch({ type: "ASSIGN_TICKET", payload: { response : response.data, ticketId : ticketId } } );
+         })
+         .catch(err => console.log("ERROR:", err));
+}
 
-       // ORIGINAL CODE WITH LOCAL DATA--------------------------------------------------------------
-       //dispatch( { type: "ASSIGN_TICKET", payload: { ticketId : ticketId , helperId : helperId } } )
-    //}
- }
 
  export const getAssigned = (helperId) => dispatch => {
-   //return dispatch => {
-      console.log('GET ASSIGN')
+   
       axiosWithAuth().get(`/api/tickets/helper_id/${helperId}`)
-      .then( (response) => {
-         console.log("RESPONSE FROM GET ASSIGN: " , response) // RESPONSE IS THE ARRAY
-         dispatch({ type: "GET_ASSIGNED", payload: response.data });
-      })
-      .catch(err => console.log("ERROR:", err));
-
-      // ORIGINAL CODE WITH LOCAL DATA--------------------------------------------------------------
-      //dispatch( { type: "ASSIGN_TICKET", payload: { ticketId : ticketId , helperId : helperId } } )
-   //}
+         .then( (response) => {
+            // RESPONSE IS THE ARRAY
+            dispatch({ type: "GET_ASSIGNED", payload: response.data });
+         })
+         .catch(err => console.log("ERROR:", err));
 }
  
+
  export const reassignTicket = (ticketId) => dispatch => {
-    //return dispatch => {
-
-      console.log('REASSIGN')
-
-      //  axiosWithAuth().put(`/api/tickets/${ticketId}/helper/${0}`)
-      //  .then( (response) => {
-      //        console.log("RESPONSE FROM REASSIGN", response.data) // RESPONSE IS THE OBJECT
-      //        dispatch({ type: "REASSIGN_TICKET", payload: ticketId})
-      //  })
-      //  .catch(err => console.log("ERROR:", err));
-
+    
        function resetHelperId () {
          return axiosWithAuth().put(`/api/tickets/${ticketId}/helper/${0}`)
        }
-       
        function setResolvedToFalse() {
          return axiosWithAuth().put(`/api/tickets/${ticketId}/status`, { "status": 0 } )
        }
        
        axios.all( [ resetHelperId(), setResolvedToFalse()] )
          .then(axios.spread( (...responses) => {
-            console.log( "AXIOS ALL : ", responses[0] )
-            console.log( "AXIOS ALL : ", responses[1] )
+            //console.log( "AXIOS ALL : ", responses[0] )
+            //console.log( "AXIOS ALL : ", responses[1] )
+            dispatch( { type: "REASSIGN_TICKET", payload: ticketId } )
          }))
          .catch( (errors) => { console.log("ERRORS IN AXIOS ALL",errors) } )
-
-
-       // ORIGINAL CODE WITH LOCAL DATA--------------------------------------------------------------
-       dispatch( { type: "REASSIGN_TICKET", payload: ticketId } )
-    //}
  }
 
+
  export const resolveTicket = (ticketId) => dispatch => {
-   //return dispatch => {
-      console.log('RESOLVE')
+
       axiosWithAuth().put(`/api/tickets/${ticketId}/status`, { "status": 1 } )
       .then( (response) => {
-            console.log("response from RESOLVE TICKETS CALL: ",response.data) // RESPONSE IS THE OBJECT
-            //dispatch({ type: "GET_ASSIGNED", payload: response.data });
+            // RESPONSE IS A TICKET OBJECT
+            dispatch( { type: "RESOLVE_TICKET", payload: ticketId } )
       })
       .catch(err => console.log("ERROR:", err));
-
-      dispatch( { type: "RESOLVE_TICKET", payload: ticketId } )
-   //}
 }
 
 
