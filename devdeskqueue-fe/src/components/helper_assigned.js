@@ -1,4 +1,4 @@
-import React, { } from "react";
+import React, { useEffect } from "react";
 import { useHistory, useParams } from 'react-router-dom'
 import styled from 'styled-components';
 //REDUX
@@ -7,9 +7,16 @@ import { reassignTicket, resolveTicket, getAssigned } from './actions/studentAct
 
 function HelperAssigned(props){
 
+   console.log("props",props.state.assigned_tickets)
+ 
+   useEffect( ()=> {
+      console.log("useEffet is called")
+      props.getAssigned(id);
+   },[])
+
    const  history  = useHistory();
    const { id }   = useParams();
-
+   
    const routeToAllTickets = () => {
       history.push(`/helper-tickets/${id}`)
    }
@@ -27,10 +34,10 @@ function HelperAssigned(props){
         <button onClick={routeToMyTickets}>My Queue</button>
         <button onClick={routeToResolved}>All Resolved Tickets</button>
         <TicketList>
-           { props.state.tickets.map( item => {
+           { props.state.assigned_tickets.map( item => {
 
-              if( item.helper_id === id && item.status === false ){
-
+              if( item.helper_id.toString() === id && item.status === false ){
+   
                   return <Ticket key={item.id}>
                               <h3>{item.title}</h3>
                               <p>Category: {item.category}</p>
@@ -39,9 +46,8 @@ function HelperAssigned(props){
                               <p>Assigned to: {item.helper_id}</p>
                               <button onClick={ ()=> {props.reassignTicket(item.id);} }>Re-Assign</button>
                               <button onClick={ ()=> {props.resolveTicket(item.id);} }>Resolve </button>
-                           </Ticket>;
-                           
-              }//IF
+                           </Ticket>;       
+             }//IF
 
            })}
         </TicketList>

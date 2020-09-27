@@ -7,8 +7,13 @@ import { assignTicket, getData } from './actions/studentAction';
 
 function HelperTickets(props){
 
+   console.log("HELPER TICKETS props",props.state.tickets)
    //console.log("TICKETS IN HELPER: ", props.state.tickets )
-   getData();
+   useEffect( ()=> {
+      console.log("useEffet is called")
+      props.getData();
+   },[])
+  
 
    const history  = useHistory();
    const { id }   = useParams();
@@ -33,7 +38,7 @@ function HelperTickets(props){
         <button onClick={routeToResolved}>All Resolved Tickets</button>
         <TicketList>
            { props.state.tickets.map( item => {
-               if( item.helper_id === null && item.status === false ){
+               if( item.helper_id === null /* && item.status === false */ ){
                      return <Ticket key={item.id}>
                                  <h3>{item.title}</h3>
                                  <p>Category: {item.category}</p>
@@ -54,7 +59,7 @@ const mapStateToProps = (state) => {
    return {state};
  }
 
-export default connect( mapStateToProps, { assignTicket } )(HelperTickets);
+export default connect( mapStateToProps, { assignTicket, getData } )(HelperTickets);
 
 const TicketContainer = styled.div`
    button{

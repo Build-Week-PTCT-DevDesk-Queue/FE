@@ -1,11 +1,18 @@
-import React, { } from "react";
+import React, { useEffect } from "react";
 import { useHistory, useParams } from 'react-router-dom'
 import styled from 'styled-components';
 //REDUX
 import { connect } from 'react-redux';
-import { reassignTicket } from './actions/studentAction';
+import { reassignTicket, getAssigned } from './actions/studentAction';
 
 function HelperResolved(props){
+
+   console.log("helper resoved props", props)
+
+   useEffect( ()=> {
+      console.log("Resolve useEffect is called")
+      props.getAssigned(id);
+   },[])
 
    const  history  = useHistory();
    const { id }   = useParams();
@@ -27,9 +34,9 @@ function HelperResolved(props){
         <button onClick={routeToMyTickets}>My Queue</button>
         <button onClick={routeToResolved}>All Resolved Tickets</button>
         <TicketList>
-               { props.state.tickets.map( item => {
+               { props.state.assigned_tickets.map( item => {
 
-               if( item.helper_id === id && item.status === true ){
+               if( item.helper_id.toString() === id  && item.status === true  ){
 
                   return <Ticket key={item.id}>
                               <h3>{item.title}</h3>
@@ -52,7 +59,7 @@ const mapStateToProps = (state) => {
    return {state};
  }
 
-export default connect( mapStateToProps, { reassignTicket } )(HelperResolved);
+export default connect( mapStateToProps, { reassignTicket, getAssigned } )(HelperResolved);
 
 const TicketContainer = styled.div`
    button{

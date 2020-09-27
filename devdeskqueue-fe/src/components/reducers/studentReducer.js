@@ -173,20 +173,32 @@ const intialState = {
             
             case "ASSIGN_TICKET":
 
-                //console.log( "PAYLOAD", action.payload.ticketId )
-                return state.tickets.map( (item) => {
+               return {
+                  ...state,
+                  assigned_tickets: [...state.assigned_tickets, action.payload],
+                  tickets: state.tickets.filter( (item)=> { return item.id !== action.payload.helper_id})
+              };
+               // LOCAL DATA---------------------------
+               //  return state.tickets.map( (item) => {
        
-                   if(item.id === action.payload.ticketId){
-                       return{...item, helper_id: action.payload.helperId }
-                   }else{
-                      return item;
-                   }
-                })
+               //     if(item.id === action.payload.ticketId){
+               //         return{...item, helper_id: action.payload.helperId }
+               //     }else{
+               //        return item;
+               //     }
+               //tickets: state.tickets.filter( (item)=> { return item.id !== action.payload.helper_id.toString()})
+               //  })
+             case "GET_ASSIGNED":
                 
+               return {
+                  ...state,
+                  assigned_tickets: action.payload 
+              };
        
              case "RESOLVE_TICKET":
-                return state.tickets.map( (item) => {
-       
+         
+                const resolvedTickets = state.assigned_tickets.map( (item) => {
+            
                    if(item.id === action.payload){
                        // ADD IF() STATEMENT - CHECK IF ALREDY ASSGINED
                        return{...item, status: true }
@@ -194,18 +206,26 @@ const intialState = {
                       return item;
                    }
                 })
+               return {
+                  ...state,
+                  assigned_tickets: resolvedTickets //.filter( (item)=> { return item.id !== action.payload.toString()})
+              };
                 
              case "REASSIGN_TICKET":
                 
-                return state.tickets.map( (item) => {
+               //  return state.assigned_tickets.map( (item) => {
        
-                   if(item.id === action.payload){
-                       // ADD IF() STATEMENT - CHECK IF ALREDY ASSGINED
-                       return{...item, status: false ,helper_id: null}
-                   }else{
-                      return item;
-                   }
-                })
+               //     if(item.id !== action.payload){
+               //        return item;
+               //     }
+               //  })
+                return {
+                  ...state,
+                  assigned_tickets: state.assigned_tickets.filter( (item)=> { return item.id !== action.payload.toString()})
+              };
+
+
+
 
         default:
             return state;
