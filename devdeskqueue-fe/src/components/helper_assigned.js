@@ -6,11 +6,8 @@ import { connect } from 'react-redux';
 import { reassignTicket, resolveTicket, getAssigned } from './actions/studentAction';
 
 function HelperAssigned(props){
-
-   console.log("props",props.state.assigned_tickets)
  
    useEffect( ()=> {
-      console.log("useEffet is called")
       props.getAssigned(id);
    },[])
 

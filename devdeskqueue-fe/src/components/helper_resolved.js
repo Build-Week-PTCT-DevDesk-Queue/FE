@@ -7,10 +7,7 @@ import { reassignTicket, getAssigned } from './actions/studentAction';
 
 function HelperResolved(props){
 
-   console.log("helper resoved props", props)
-
    useEffect( ()=> {
-      console.log("Resolve useEffect is called")
       props.getAssigned(id);
    },[])
 
@@ -45,7 +42,6 @@ function HelperResolved(props){
                               <p>{item.tried}</p>
                               <p>Assigned to: {item.helper_id}</p>
                               <button onClick={ ()=> {props.reassignTicket(item.id);} }>Re-Assign</button>
-                              {/* <button onClick={ ()=> {props.deleteTicket(item.id);} }>Delete</button> */}
                            </Ticket>;
                }//if
 

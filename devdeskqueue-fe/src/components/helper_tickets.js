@@ -6,15 +6,11 @@ import { connect } from 'react-redux';
 import { assignTicket, getData } from './actions/studentAction';
 
 function HelperTickets(props){
-
-   console.log("HELPER TICKETS props",props.state.tickets)
-   //console.log("TICKETS IN HELPER: ", props.state.tickets )
+   
    useEffect( ()=> {
-      console.log("useEffect is called")
       props.getData();
    },[])
   
-
    const history  = useHistory();
    const { id }   = useParams();
 
@@ -22,11 +18,9 @@ function HelperTickets(props){
       history.push(`/helper-tickets/${id}`)
    }
    const routeToMyTickets = () => {
-      //NEED TO GET HELPER TICKETS FROM API, FILTER BY STATUS TO DISPLAY
       history.push(`/assigned-tickets/${id}`)
    }
    const routeToResolved = () => {
-        //NEED TO GET HELPER TICKETS FROM API , THEN FILTER BY STATUS TO DISPLAY
       history.push(`/resolved-tickets/${id}`)
    }
 

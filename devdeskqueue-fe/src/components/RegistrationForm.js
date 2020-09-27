@@ -73,7 +73,6 @@ const Registration = () => {
            console.log(err)
         })
 
-        console.log("form submited!!");
         setRegState({
             username: "",
             password: "",
